@@ -1,0 +1,45 @@
+Kamisado
+
+Structure of the Project
+    - ***Backend classes contain only the data and functions necessary***
+    - Use card layout for easier transition to end-screen, menus, and gameplay
+Classes:
+   Main
+    - Kamisado
+        * The main class
+        * Runs the game (contains main game loop)
+        Game Loop (in simplest form)
+        * get move
+          check move 
+          if move is valid
+            update board 
+            update turn 
+            check state for team win
+        * a move could be an array containing 2 squares like [start, end]
+   Backend
+    - Board (might be better as just a 2d array instead of an object container for the array)
+        * contains 2D array of squares
+    - Square
+        * have their own color and position within the array
+        * contain either a DragonTower or null (no piece)
+    - DragonTower
+        * has team color (black or white)
+        * has another color that determines movement
+        * ***sumo rings***
+    - MouseController - extends MouseAdapter
+        * used to get move input from user
+    - MoveValidator 
+        * checks a move against the current board state to see if the move is valid
+   Frontend
+    - GraphicsWindow - extends JFrame
+        * Creates and sets up the JFrame to render game in
+        * sets up the card layout
+        * create a cards object that extends BackgroundPanel and will contain all other panels
+        * creates all of the graphics panels and adds them to cards
+        * add cards to JFrame
+    - MenuPanel - extends JPanel
+    - GamePanel - extends JPanel
+        * The board and pieces are drawn on this panel, as well as any useful info
+    - EndGamePanel - extends JPanel (this class is for if we want a completely new panel shown when someone wins)
+
+    
