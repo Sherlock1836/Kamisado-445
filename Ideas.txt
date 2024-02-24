@@ -21,6 +21,8 @@ Classes:
         * contains 2D array of squares
     - Square
         * have their own color and position within the array
+        ****colors stored as strings for easier comparisons, front-end 
+            can translate color string to Color object
         * contain either a DragonTower or null (no piece)
     - DragonTower
         * has team color (black or white)
