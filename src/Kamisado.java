@@ -3,8 +3,10 @@
  * CSC 445 Final Project
  */
 public class Kamisado {
+    private static Board gameBoard;
     public static void main(String[] args) throws Exception {
-        //new GraphicsWindow();
-        new Board();
+        gameBoard = new Board();
+        gameBoard.initializeBoard();
+        new GraphicsWindow(gameBoard);
     }
 }

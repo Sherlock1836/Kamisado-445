@@ -8,8 +8,13 @@ public class Board {
         printBoard();
     }
 
+    public Square[][] getBoardArray() {
+        return boardArray;
+    }
+
     //this method is fucking stupid but I spent too much time on it to quit so here it is...
     //generates the square colors with a function for each color
+    //****SHOULD ONLY BE CALLED ONCE AT GAME START*** (add resetBoard method to reset pieces)
     public void initializeBoard() {
         for(int row = 0; row < boardArray.length; row++) {
             for(int column = 0; column < boardArray[row].length; column++){
