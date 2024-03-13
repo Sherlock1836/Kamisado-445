@@ -21,8 +21,7 @@ public class GamePanel  extends JPanel{
                 boardPanel.add(board.getBoardArray()[row][col]);
                 //System.out.println(board.getBoardArray()[row][col].getColor());
             }
-        }    
-        setPreferredSize(new Dimension(8*50, 8*50));
+        }
         add(boardPanel, BorderLayout.CENTER);
     }
 
