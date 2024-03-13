@@ -4,6 +4,7 @@
  */
 public class Kamisado {
     public static void main(String[] args) throws Exception {
-        new GraphicsWindow();
+        //new GraphicsWindow();
+        new Board();
     }
 }
