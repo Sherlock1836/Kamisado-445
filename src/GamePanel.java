@@ -5,7 +5,8 @@ import java.awt.GridLayout;
 public class GamePanel  extends JPanel{
     private JPanel boardPanel;  //a panel on which to display the board graphically
     private JPanel squares[][]; //these individual panels will go in the board panel,
-                                // and each one will have its own mouse listener to detect clicks
+                                //and each one will have its own mouse listener to detect clicks...
+                                //need to make Squares extend JPanel and implement a paint method 
 
     public GamePanel() {
         boardPanel = new JPanel(new GridLayout (8, 8));
