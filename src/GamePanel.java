@@ -16,12 +16,9 @@ public class GamePanel  extends JPanel{
         setLayout(new BorderLayout());
         boardPanel = new JPanel(new GridLayout (8, 8));
         this.board = board;
-        for(int row = 0; row < 8; row++) {
-            for(int col = 0; col < 8; col++){
+        for(int row = 0; row < 8; row++)
+            for(int col = 0; col < 8; col++)
                 boardPanel.add(board.getBoardArray()[row][col]);
-                //System.out.println(board.getBoardArray()[row][col].getColor());
-            }
-        }
         add(boardPanel, BorderLayout.CENTER);
     }
 
