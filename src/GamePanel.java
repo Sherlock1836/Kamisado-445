@@ -2,15 +2,18 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JPanel;
+import javax.swing.JButton;
 
 public class GamePanel extends JPanel{
     private BackgroundPanel boardPanelHolder;
-    private JPanel boardPanel;  //a panel on which to display the board graphically
-                                 //these individual panels will go in the board panel,
-                                //and each one will have its own mouse listener to detect clicks...
-                                //need to make Squares extend JPanel and implement a paint method 
+    private JPanel boardPanel;
+    private JPanel buttonPanel;
+    private JButton returnToMenu;
+    private JButton start;
 
     public GamePanel(Board board) {
         boardPanelHolder = new BackgroundPanel(new Color(255, 255, 255, 1));
@@ -21,5 +24,28 @@ public class GamePanel extends JPanel{
                 boardPanel.add(board.getBoardArray()[row][col]);
         boardPanelHolder.add(boardPanel, BorderLayout.CENTER);
         add(boardPanelHolder);
+
+        buttonPanel = new JPanel();
+        buttonPanel.setOpaque(false);
+        buttonPanel.setPreferredSize(new Dimension(100, 200));
+        start = new JButton("Start");
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                //probably change a boolean in Kamisado called gameOver or something
+            }
+        });
+        buttonPanel.add(start);
+
+        returnToMenu = new JButton("Back to Menu");
+        returnToMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Kamisado.showPanel("MenuPanel");
+            }
+        });
+        buttonPanel.add(returnToMenu);
+
+        add(buttonPanel);
     }
 }

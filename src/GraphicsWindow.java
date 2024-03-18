@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 public class GraphicsWindow extends JFrame{
     private final int FRAME_WIDTH = 720;
-    private final int FRAME_HEIGHT = 640;
+    private final int FRAME_HEIGHT = 600;
     
     private GamePanel gp;
     private MenuPanel mp;
