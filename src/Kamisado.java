@@ -4,9 +4,19 @@
  */
 public class Kamisado {
     private static Board gameBoard;
+    private static GraphicsWindow gWindow;
     public static void main(String[] args) throws Exception {
         gameBoard = new Board();
         gameBoard.initializeBoard();
-        new GraphicsWindow(gameBoard);
+
+        gWindow = new GraphicsWindow(gameBoard);
+    }
+
+    public static void showPanel(String panel) {
+        gWindow.showPanel(panel);
+    }
+
+    public static void endGame() {
+        gWindow.dispose();
     }
 }

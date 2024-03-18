@@ -5,7 +5,6 @@ public class Board {
 
     public Board() {
         initializeBoard();
-        printBoard();
     }
 
     public Square[][] getBoardArray() {
@@ -38,7 +37,15 @@ public class Board {
         }
     }
 
-    //print method for testing
+    public void resetBoard() {
+        for(int row = 0; row < boardArray.length; row++){
+            for(int column = 0; column < boardArray[row].length; column++){
+                //set dragon towers accordingly
+            }
+        }
+    }
+
+    //Original print method for testing 
     public void printBoard() {
         for(int row = 0; row < boardArray.length; row++) {
             for(int column = 0; column < boardArray[row].length; column++){
