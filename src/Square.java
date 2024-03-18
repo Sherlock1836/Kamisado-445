@@ -24,31 +24,31 @@ public class Square extends JPanel{
     protected void paintComponent(Graphics g) {
         switch(COLOR) {
             case "orange":
-                g.setColor(Color.ORANGE);
+                g.setColor(new Color(245, 132, 40));
                 break;
             case "blue":
-                g.setColor(Color.BLUE);
+                g.setColor(new Color(0, 121, 194));
                 break;
             case "purple":
-                g.setColor(new Color(255, 0, 255));
+                g.setColor(new Color(239, 128, 179));
                 break;
             case "pink":
-                g.setColor(Color.PINK);
+                g.setColor(new Color(124, 66, 153));
                 break;
             case "yellow":
-                g.setColor(Color.YELLOW);
+                g.setColor(new Color(255, 222, 0));
                 break;
             case "red":
-                g.setColor(Color.RED);
+                g.setColor(new Color(238, 58, 67));
                 break;
             case "green":
-                g.setColor(Color.GREEN);
+                g.setColor(new Color(0, 162, 95));
                 break;
             case "black":
-                g.setColor(Color.BLACK);
+                g.setColor(new Color(45, 45, 45));
                 break;
             default:
-                g.setColor(Color.WHITE); //if this happens, somethings fucked up
+                g.setColor(new Color(230, 230, 230)); //if this happens, somethings fucked up
                 break;
         }
         g.fillRect(0, 0, getWidth(), getHeight());
