@@ -20,6 +20,14 @@ public class Square extends JPanel{
         return dTower;
     }
 
+    public void setDragonTower(String color, String team_color){
+        dTower = new DragonTower(color, team_color);
+    }
+
+    public void resetdTower(){
+        dTower = null;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         switch(COLOR) {

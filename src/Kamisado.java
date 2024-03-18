@@ -19,4 +19,8 @@ public class Kamisado {
     public static void endGame() {
         gWindow.dispose();
     }
+
+    public static void gameLoop(){
+        
+    }
 }
