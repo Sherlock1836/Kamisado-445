@@ -30,10 +30,10 @@ public class Square extends JPanel{
                 g.setColor(new Color(0, 121, 194));
                 break;
             case "purple":
-                g.setColor(new Color(239, 128, 179));
+                g.setColor(new Color(124, 66, 153));
                 break;
             case "pink":
-                g.setColor(new Color(124, 66, 153));
+                g.setColor(new Color(239, 128, 179));
                 break;
             case "yellow":
                 g.setColor(new Color(255, 222, 0));
