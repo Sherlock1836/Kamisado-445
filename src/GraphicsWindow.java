@@ -33,7 +33,7 @@ public class GraphicsWindow extends JFrame{
         cards.add(gp, "GamePanel");
         cards.add(mp, "MenuPanel");
         
-        cl.show(cards, "GamePanel");
+        cl.show(cards, "MenuPanel");
     
 
         add(cards);
@@ -42,5 +42,9 @@ public class GraphicsWindow extends JFrame{
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    public void showPanel(String panel) {
+        cl.show(cards, panel);
     }
 }

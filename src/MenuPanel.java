@@ -1,7 +1,9 @@
+import java.awt.CardLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,7 +21,19 @@ public class MenuPanel extends JPanel{
         buttonPanel.setOpaque(false);
 
         playButton = new JButton("Play");
+        playButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                Kamisado.showPanel("GamePanel");
+            }
+        });
         exitButton = new JButton("Exit");
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event){
+                Kamisado.endGame();
+            }
+        });
 
         configureButton(playButton);
         configureButton(exitButton);
