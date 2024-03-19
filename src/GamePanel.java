@@ -84,8 +84,13 @@ public class GamePanel extends JPanel {
         public void mousePressed(MouseEvent e) {
             if(selectedSquare == null) {
                 selectedSquare = (Square) e.getSource();
-                selectedSquare.setSelected(true);// Highlight selected square
-                selectedSquare.repaint(); //probably will need this
+                if((selectedSquare.getDragonTower() != null)
+                  && ((selectedSquare.getDragonTower().getTeam() == "black") == Kamisado.isBlacksTurn)) {
+                    selectedSquare.setSelected(true);// Highlight selected square
+                    selectedSquare.repaint(); //probably will need this
+                } else {
+                    selectedSquare = null;
+                }
             } else {
                 destinationSquare = (Square) e.getSource();
             }

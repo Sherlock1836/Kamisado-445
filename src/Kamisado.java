@@ -9,8 +9,10 @@ public class Kamisado {
     private static MoveValidator moveValidator;
     private static boolean gameOver;
     private static Square[] move;
+    public static boolean isBlacksTurn; //is public so square mouse listener can check team before allowing selection
     public static void main(String[] args) throws Exception {
         gameOver = true;
+        isBlacksTurn = true;
         gameBoard = new Board();
         gameBoard.initializeBoard();
         gWindow = new GraphicsWindow(gameBoard);
