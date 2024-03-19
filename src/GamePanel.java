@@ -17,7 +17,19 @@ public class GamePanel extends JPanel {
     private JButton returnToMenu;
     private JButton start;
 
-    private Square selectedSquare; // Store the selected square for dragging
+    private Square selectedSquare;      // Store the selected square for dragging
+    private Square destinationSquare;   //Store destination square
+
+    public Square[] getMove() {
+        Square[] move = null;
+        if(selectedSquare != null && destinationSquare != null){
+            move = new Square[] {selectedSquare, destinationSquare}; //pack move in an array to be processed
+            selectedSquare.setSelected(false);
+            selectedSquare = null;
+            destinationSquare = null;
+        }
+        return move;
+    }
 
     public GamePanel(Board board) {
         boardPanelHolder = new BackgroundPanel(new Color(255, 255, 255, 1));
@@ -32,7 +44,7 @@ public class GamePanel extends JPanel {
 
                 // Add mouse listener to each square
                 square.addMouseListener(new SquareMouseListener());
-                square.addMouseMotionListener(new SquareMouseMotionListener());
+                //square.addMouseMotionListener(new SquareMouseMotionListener());
 
                 // Add the square to the board panel
                 boardPanel.add(square);
@@ -49,7 +61,7 @@ public class GamePanel extends JPanel {
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                // probably change a boolean in Kamisado called gameOver or something
+                Kamisado.setGameOver(false);
             }
         });
         buttonPanel.add(start);
@@ -70,20 +82,26 @@ public class GamePanel extends JPanel {
     private class SquareMouseListener extends MouseAdapter {
         @Override
         public void mousePressed(MouseEvent e) {
-            selectedSquare = (Square) e.getSource();
-            selectedSquare.setOpaque(true); // Highlight selected square
+            if(selectedSquare == null) {
+                selectedSquare = (Square) e.getSource();
+                selectedSquare.setSelected(true);// Highlight selected square
+                selectedSquare.repaint(); //probably will need this
+            } else {
+                destinationSquare = (Square) e.getSource();
+            }
         }
 
-        @Override
+        /*@Override
         public void mouseReleased(MouseEvent e) {
-            selectedSquare.setOpaque(false); // Remove highlight when mouse released
+            selectedSquare.setSelected(false); // Remove highlight when mouse released
+            //selectedSquare.repaint(); //probably will need need this 
             selectedSquare = null; // Reset selected square
-        }
+        }*/
     }
 
     // Inner class for mouse motion listener implementation
     //All this set to change, feel free to edit
-    private class SquareMouseMotionListener extends MouseAdapter {
+    /*private class SquareMouseMotionListener extends MouseAdapter {
         @Override
         public void mouseDragged(MouseEvent e) {
             if (selectedSquare != null) {
@@ -93,5 +111,5 @@ public class GamePanel extends JPanel {
                 draggedSquare.setLocation(draggedSquare.getX() - draggedSquare.getWidth()/2 + e.getX(), draggedSquare.getY() - draggedSquare.getHeight()/2 + e.getY());
             }
         }
-    }
+    }*/
 }

@@ -2,17 +2,22 @@ import javax.swing.JPanel;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class Square extends JPanel{
     private final String COLOR;
-    private DragonTower dTower = null;
+    private DragonTower dTower;
+    private boolean selected;
 
     public Square(String color, DragonTower dTower) {
         COLOR = color;
         this.dTower = dTower;
+        selected = false;
+    }
+
+    public void setSelected(boolean s) {
+        selected = s;
     }
 
     public String getColor() {
@@ -25,6 +30,10 @@ public class Square extends JPanel{
 
     public void setDragonTower(String color, String team_color){
         dTower = new DragonTower(color, team_color);
+    }
+
+    public void setDragonTower(DragonTower d) {
+        dTower = d;
     }
 
     public void resetdTower(){
@@ -42,7 +51,10 @@ public class Square extends JPanel{
             else
                 g2D.setColor(Color.WHITE);
             g2D.fillOval(9, 9, 50, 50);
-            g2D.setColor(Color.DARK_GRAY);
+            if(selected)
+                g2D.setColor(Color.LIGHT_GRAY);
+            else
+                g2D.setColor(Color.DARK_GRAY);
             g2D.setStroke(new BasicStroke(3));
             g2D.drawOval(9, 9, 50, 50);
             setColor(g2D);

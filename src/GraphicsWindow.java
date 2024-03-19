@@ -47,4 +47,12 @@ public class GraphicsWindow extends JFrame{
     public void showPanel(String panel) {
         cl.show(cards, panel);
     }
+
+    public void updateGamePanel() {
+        gp.repaint();
+    }
+
+    public Square[] getMove() {
+        return gp.getMove();
+    }
 }
