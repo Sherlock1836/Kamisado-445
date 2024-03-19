@@ -39,8 +39,10 @@ public class Kamisado {
                     Thread.sleep(100);  //sleep so that while loop doesn't kill itself
                 } catch(InterruptedException e){}
             }
-            if(moveValidator.checkValidityOf(move))
+            if(moveValidator.checkValidityOf(move)){
                 executeMove(move);
+                isBlacksTurn = !isBlacksTurn;
+            }
             //check if game has been won
             gWindow.updateGamePanel(); //update gui
         }
