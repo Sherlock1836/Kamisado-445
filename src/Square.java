@@ -2,6 +2,7 @@ import javax.swing.JPanel;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -49,7 +50,7 @@ public class Square extends JPanel{
             if(dTower.getTeam() == "black")
                 g2D.setColor(Color.BLACK);
             else
-                g2D.setColor(Color.WHITE);
+                g2D.setColor(new Color(245, 245, 245));
             g2D.fillOval(9, 9, 50, 50);
             if(selected)
                 g2D.setColor(Color.LIGHT_GRAY);
@@ -58,8 +59,8 @@ public class Square extends JPanel{
             g2D.setStroke(new BasicStroke(3));
             g2D.drawOval(9, 9, 50, 50);
             setColor(g2D, dTower.getColor());
-            
-            g2D.drawString(getSymbol(), 25, 25);
+            g2D.setFont(new Font("Noto Sans", Font.BOLD, 20));;
+            g2D.drawString(getSymbol(), 24, 41);
         }
     }
 
@@ -78,7 +79,7 @@ public class Square extends JPanel{
                 g2D.setColor(new Color(239, 128, 179));
                 break;
             case "yellow":
-                g2D.setColor(new Color(255, 222, 0));
+                g2D.setColor(new Color(235, 202, 0));
                 break;
             case "red":
                 g2D.setColor(new Color(238, 58, 67));
@@ -86,8 +87,8 @@ public class Square extends JPanel{
             case "green":
                 g2D.setColor(new Color(0, 162, 95));
                 break;
-            case "black":
-                g2D.setColor(new Color(45, 45, 45));
+            case "brown":
+                g2D.setColor(new Color(84, 63, 48));
                 break;
             default:
                 g2D.setColor(new Color(230, 230, 230)); //if this happens, somethings fucked up
@@ -98,21 +99,21 @@ public class Square extends JPanel{
     private String getSymbol() {
         switch(dTower.getColor()) {
             case "orange":
-                return "a";
+                return "橙";
             case "blue":
-                return "a";
+                return "藍";
             case "purple":
-                return "a";
+                return "紫";
             case "pink":
-                return "a";
+                return "桃";
             case "yellow":
-                return "a";
+                return "黄";
             case "red":
                 return "紅";
             case "green":
                 return "緑";
-            case "black":
-                return "a";
+            case "brown":
+                return "褐";
             default:
                 return "";
         }
