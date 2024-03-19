@@ -59,8 +59,8 @@ public class Square extends JPanel{
             g2D.setStroke(new BasicStroke(3));
             g2D.drawOval(9, 9, 50, 50);
             setColor(g2D, dTower.getColor());
-            g2D.setFont(new Font("Noto Sans", Font.BOLD, 20));;
-            g2D.drawString(getSymbol(), 24, 41);
+            g2D.setFont(new Font("SansSerif", Font.BOLD, 23));;
+            g2D.drawString(getSymbol(), 22, 41);
         }
     }
 
