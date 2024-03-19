@@ -8,6 +8,7 @@ public class Kamisado {
     public static void main(String[] args) throws Exception {
         gameBoard = new Board();
         gameBoard.initializeBoard();
+        gameBoard.resetBoard();
 
         gWindow = new GraphicsWindow(gameBoard);
     }

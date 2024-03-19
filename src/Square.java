@@ -1,7 +1,10 @@
 import javax.swing.JPanel;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 public class Square extends JPanel{
     private final String COLOR;
@@ -30,35 +33,76 @@ public class Square extends JPanel{
 
     @Override
     protected void paintComponent(Graphics g) {
+        Graphics2D g2D = (Graphics2D)g;
+        setColor(g2D);
+        g2D.fillRect(0, 0, getWidth(), getHeight());
+        if(dTower != null) {
+            if(dTower.getTeam() == "black")
+                g2D.setColor(Color.BLACK);
+            else
+                g2D.setColor(Color.WHITE);
+            g2D.fillOval(9, 9, 50, 50);
+            g2D.setColor(Color.DARK_GRAY);
+            g2D.setStroke(new BasicStroke(3));
+            g2D.drawOval(9, 9, 50, 50);
+            setColor(g2D);
+            
+            g2D.drawString(getSymbol(), 25, 25);
+        }
+    }
+
+    private void setColor(Graphics2D g2D) {
         switch(COLOR) {
             case "orange":
-                g.setColor(new Color(245, 132, 40));
+                g2D.setColor(new Color(245, 132, 40));
                 break;
             case "blue":
-                g.setColor(new Color(0, 121, 194));
+                g2D.setColor(new Color(0, 121, 194));
                 break;
             case "purple":
-                g.setColor(new Color(124, 66, 153));
+                g2D.setColor(new Color(124, 66, 153));
                 break;
             case "pink":
-                g.setColor(new Color(239, 128, 179));
+                g2D.setColor(new Color(239, 128, 179));
                 break;
             case "yellow":
-                g.setColor(new Color(255, 222, 0));
+                g2D.setColor(new Color(255, 222, 0));
                 break;
             case "red":
-                g.setColor(new Color(238, 58, 67));
+                g2D.setColor(new Color(238, 58, 67));
                 break;
             case "green":
-                g.setColor(new Color(0, 162, 95));
+                g2D.setColor(new Color(0, 162, 95));
                 break;
             case "black":
-                g.setColor(new Color(45, 45, 45));
+                g2D.setColor(new Color(45, 45, 45));
                 break;
             default:
-                g.setColor(new Color(230, 230, 230)); //if this happens, somethings fucked up
+                g2D.setColor(new Color(230, 230, 230)); //if this happens, somethings fucked up
                 break;
         }
-        g.fillRect(0, 0, getWidth(), getHeight());
+    }
+
+    private String getSymbol() {
+        switch(COLOR) {
+            case "orange":
+                return "";
+            case "blue":
+                return "";
+            case "purple":
+                return "";
+            case "pink":
+                return "";
+            case "yellow":
+                return "";
+            case "red":
+                return "紅";
+            case "green":
+                return "緑";
+            case "black":
+                return "";
+            default:
+                return "";
+        }
     }
 }

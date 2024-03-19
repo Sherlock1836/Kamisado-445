@@ -90,7 +90,7 @@ public class GamePanel extends JPanel {
                 // Get the current square being dragged
                 Square draggedSquare = (Square) e.getSource();
                 // Update the location of the dragged square based on mouse position
-                draggedSquare.setLocation(draggedSquare.getX() + e.getX(), draggedSquare.getY() + e.getY());
+                draggedSquare.setLocation(draggedSquare.getX() - draggedSquare.getWidth()/2 + e.getX(), draggedSquare.getY() - draggedSquare.getHeight()/2 + e.getY());
             }
         }
     }

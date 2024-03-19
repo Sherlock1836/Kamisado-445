@@ -1,10 +1,10 @@
 
 public class Board {
     //board array is in [row, column] form ([y, x])
-    private Square[][] boardArray = new Square[8][8];
+    private Square[][] boardArray;
 
     public Board() {
-        initializeBoard();
+        boardArray = new Square[8][8];
     }
 
     public Square[][] getBoardArray() {
@@ -42,9 +42,12 @@ public class Board {
     }
 
     public void resetBoard() {
-        for(int row = 0; row < boardArray.length; row++){
+        for(int row = 0; row < boardArray.length; row += 7){
             for(int column = 0; column < boardArray[row].length; column++){
                 //set dragon towers accordingly
+                String tColor;
+                tColor = (row == 0) ? "black" : "white";
+                boardArray[row][column].setDragonTower(boardArray[row][column].getColor(), tColor);
             }
         }
     }
