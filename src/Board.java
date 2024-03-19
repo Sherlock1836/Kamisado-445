@@ -24,7 +24,7 @@ public class Board {
                 if(row == column)
                     boardArray[row][column] = new Square("orange", null);
                 else if(7 - row == column)
-                    boardArray[row][column] = new Square("black", null);
+                    boardArray[row][column] = new Square("brown", null);
                 else if((row < 4 ? 3 - row : 7 - row + 4) == column)
                     boardArray[row][column] = new Square("pink", null);
                 else if((row < 4 ? 4 + row : 0 + row - 4) == column)
@@ -79,7 +79,7 @@ public class Board {
                         case "green":
                             System.out.print(" G ");
                             break;
-                        case "black":
+                        case "brown":
                             System.out.print(" b ");
                             break;
                         default:
