@@ -6,12 +6,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class Square extends JPanel{
-    private final String COLOR;
+    private final String SQUARE_COLOR;
     private DragonTower dTower;
     private boolean selected;
 
     public Square(String color, DragonTower dTower) {
-        COLOR = color;
+        SQUARE_COLOR = color;
         this.dTower = dTower;
         selected = false;
     }
@@ -21,7 +21,7 @@ public class Square extends JPanel{
     }
 
     public String getColor() {
-        return COLOR;
+        return SQUARE_COLOR;
     }
 
     public DragonTower getDragonTower() {
@@ -43,7 +43,7 @@ public class Square extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2D = (Graphics2D)g;
-        setColor(g2D);
+        setColor(g2D, SQUARE_COLOR);
         g2D.fillRect(0, 0, getWidth(), getHeight());
         if(dTower != null) {
             if(dTower.getTeam() == "black")
@@ -57,14 +57,14 @@ public class Square extends JPanel{
                 g2D.setColor(Color.DARK_GRAY);
             g2D.setStroke(new BasicStroke(3));
             g2D.drawOval(9, 9, 50, 50);
-            setColor(g2D);
+            setColor(g2D, dTower.getColor());
             
             g2D.drawString(getSymbol(), 25, 25);
         }
     }
 
-    private void setColor(Graphics2D g2D) {
-        switch(COLOR) {
+    private void setColor(Graphics2D g2D, String color) {
+        switch(color) {
             case "orange":
                 g2D.setColor(new Color(245, 132, 40));
                 break;
