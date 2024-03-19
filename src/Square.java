@@ -96,23 +96,23 @@ public class Square extends JPanel{
     }
 
     private String getSymbol() {
-        switch(COLOR) {
+        switch(dTower.getColor()) {
             case "orange":
-                return "";
+                return "a";
             case "blue":
-                return "";
+                return "a";
             case "purple":
-                return "";
+                return "a";
             case "pink":
-                return "";
+                return "a";
             case "yellow":
-                return "";
+                return "a";
             case "red":
                 return "紅";
             case "green":
                 return "緑";
             case "black":
-                return "";
+                return "a";
             default:
                 return "";
         }
