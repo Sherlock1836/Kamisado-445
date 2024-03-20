@@ -3,6 +3,8 @@ public class MoveValidator {
     private static String lastMovedOpponentColor = null;
     private static String currentPlayerColor;
 
+    private MoveValidator() {}
+
     public static boolean checkValidityOf(Square[] move) {
         // Extract move coordinates
         int startX = move[0].getX();
