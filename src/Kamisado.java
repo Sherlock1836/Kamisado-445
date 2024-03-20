@@ -9,6 +9,8 @@ public class Kamisado {
     private static boolean gameOver;
     private static Square[] move;
     public static boolean isBlacksTurn; // is public so square mouse listener can check team before allowing selection
+    public static int whiteScore;
+    public static int blackScore;
 
     public static void main(String[] args) throws Exception {
         gameOver = true;
@@ -44,7 +46,7 @@ public class Kamisado {
                 executeMove(move);
                 isBlacksTurn = !isBlacksTurn;
             }
-            // check if game has been won
+            // check if a piece made it to a homerow and update piece and score accordingly
             gWindow.updateGamePanel(); // update gui
         }
         // do whatever needs to be done after game ends (remove all pieces, show end
