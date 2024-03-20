@@ -27,6 +27,7 @@ public class Kamisado {
             }
             try {
                 Thread.sleep(250); // sleep so that while loop doesn't kill itself
+                System.out.println("catch");
             } catch (InterruptedException e) {
             }
         }
@@ -34,6 +35,7 @@ public class Kamisado {
 
     private static void gameLoop(Player bPlayer, Player wPlayer) {
         while (!gameOver) {
+            move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
             while (move == null) {
                 move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
                 try {
@@ -41,6 +43,8 @@ public class Kamisado {
                 } catch (InterruptedException e) {
                 }
             }
+            System.out.print("" + move[0].getRow() + " " + move[0].getColumn());
+            System.out.println(" to " + move[1].getRow() + " " + move[1].getColumn());
             if (MoveValidator.checkValidityOf(move, gameBoard)) {
                 executeMove(move);
                 isBlacksTurn = !isBlacksTurn;

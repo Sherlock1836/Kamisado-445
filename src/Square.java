@@ -10,8 +10,8 @@ public class Square extends JPanel {
     private final String SQUARE_COLOR;
     private DragonTower dTower;
     private boolean selected;
-    int row;
-    int column;
+    private int row;
+    private int column;
 
     public Square(String color, DragonTower dTower, int rowY, int columnX) {
         SQUARE_COLOR = color;
