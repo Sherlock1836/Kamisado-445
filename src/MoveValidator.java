@@ -13,20 +13,12 @@ public class MoveValidator {
         int endX = move[1].getColumn();
         int endY = move[1].getRow();
 
-        // Extract current player color
-        currentPlayerColor = move[0].getDragonTower().getColor();
-
         // Check if the move is valid according to Kamisado rules
         boolean isValidMove = isValidMove(startX, startY, endX, endY, board);
 
         // If it's the first turn, end it after the first move
         if (isFirstTurn) {
             endFirstTurn();
-        }
-
-        // If the move is valid, update the last moved opponent color
-        if (isValidMove) {
-            updateLastMovedOpponentColor(move[1].getDragonTower().getColor());
         }
 
         return isValidMove;
@@ -65,21 +57,20 @@ public class MoveValidator {
     }
 
     private static boolean isStraight(int startX, int startY, int endX, int endY) {
-        // check for straight line moves
-        // black starts from index 0, so slope will be positive
-        if (currentPlayerColor == "black") {
-            if ((startX == endX && endY - startY > 0) || ((endY - startY) / (endX - startX) == 1)) {
-                return true;
-            } else {
-                return false;
-            }
-            // white will start from index 7, so slope will be negative.
+        // Calculate the change in X and Y coordinates
+        int deltaX = endX - startX;
+        int deltaY = endY - startY;
+
+        // Check if the movement is vertical forward or diagonal forward
+        if (deltaX == 0 && deltaY > 0) {
+            // Vertical forward movement
+            return true;
+        } else if (deltaX != 0 && deltaY != 0 && Math.abs(deltaX) == Math.abs(deltaY)) {
+            // Diagonal forward movement
+            return true;
         } else {
-            if ((startX == endX && endY - startY < 0) || ((endY - startY) / (endX - startX) == -1)) {
-                return true;
-            } else {
-                return false;
-            }
+            // Not a valid straight movement
+            return false;
         }
     }
 

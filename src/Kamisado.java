@@ -45,7 +45,8 @@ public class Kamisado {
                 executeMove(move);
                 isBlacksTurn = !isBlacksTurn;
             }
-            // check if a piece made it to a homerow and update piece and score(attached to player object) accordingly
+            // check if a piece made it to a homerow and update piece and score(attached to
+            // player object) accordingly
             // either display win screen or start new round
             gWindow.updateGamePanel(); // update gui
         }
@@ -58,7 +59,7 @@ public class Kamisado {
         move[0].setDragonTower(null);
     }
 
-    //methods to interface with gui or somn
+    // methods to interface with gui or somn
     public static void showPanel(String panel) {
         gWindow.showPanel(panel);
     }
@@ -76,8 +77,8 @@ public class Kamisado {
     }
 
     public static void setPlayers(boolean isBotGame) {
-        if(isBotGame){
-            whitePlayer = new Player(true);     //makes white player a bot
+        if (isBotGame) {
+            whitePlayer = new Player(true); // makes white player a bot
             blackPlayer = new Player(false);
         } else {
             whitePlayer = new Player(false);
