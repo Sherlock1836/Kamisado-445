@@ -9,8 +9,8 @@ public class Kamisado {
     private static boolean gameOver;
     private static Square[] move;
     public static boolean isBlacksTurn; // is public so square mouse listener can check team before allowing selection
-    public static int whiteScore;
-    public static int blackScore;
+    private static Player whitePlayer;
+    private static Player blackPlayer;
 
     public static void main(String[] args) throws Exception {
         gameOver = true;
@@ -23,7 +23,7 @@ public class Kamisado {
             if (!gameOver) { // once start has been clicked, reset board and enter the game loop
                 gameBoard.resetBoard();
                 gWindow.updateGamePanel();
-                gameLoop();
+                gameLoop(blackPlayer, whitePlayer);
             }
             try {
                 Thread.sleep(250); // sleep so that while loop doesn't kill itself
@@ -32,11 +32,10 @@ public class Kamisado {
         }
     }
 
-    public static void gameLoop() {
+    public static void gameLoop(Player bPlayer, Player wPlayer) {
         while (!gameOver) {
-            move = gWindow.getMove();
             while (move == null) {
-                move = gWindow.getMove();
+                move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
                 try {
                     Thread.sleep(100); // sleep so that while loop doesn't kill itself
                 } catch (InterruptedException e) {
@@ -46,7 +45,7 @@ public class Kamisado {
                 executeMove(move);
                 isBlacksTurn = !isBlacksTurn;
             }
-            // check if a piece made it to a homerow and update piece and score accordingly
+            // check if a piece made it to a homerow and update piece and score(attached to player object) accordingly
             // either display win screen or start new round
             gWindow.updateGamePanel(); // update gui
         }
@@ -69,5 +68,19 @@ public class Kamisado {
 
     public static void setGameOver(boolean b) {
         gameOver = b;
+    }
+
+    public static Square[] getMoveFromGUI() {
+        return gWindow.getMove();
+    }
+
+    public static void setPlayers(boolean isBotGame) {
+        if(isBotGame){
+            whitePlayer = new Player(true);     //makes white player a bot
+            blackPlayer = new Player(false);
+        } else {
+            whitePlayer = new Player(false);
+            blackPlayer = new Player(false);
+        }
     }
 }
