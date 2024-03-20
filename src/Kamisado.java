@@ -47,6 +47,7 @@ public class Kamisado {
                 isBlacksTurn = !isBlacksTurn;
             }
             // check if a piece made it to a homerow and update piece and score accordingly
+            // either display win screen or start new round
             gWindow.updateGamePanel(); // update gui
         }
         // do whatever needs to be done after game ends (remove all pieces, show end
