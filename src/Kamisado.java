@@ -42,7 +42,7 @@ public class Kamisado {
                 } catch (InterruptedException e) {
                 }
             }
-            if (MoveValidator.checkValidityOf(move)) {
+            if (MoveValidator.checkValidityOf(move, gameBoard)) {
                 executeMove(move);
                 isBlacksTurn = !isBlacksTurn;
             }
