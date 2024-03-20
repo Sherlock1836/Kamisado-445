@@ -1,20 +1,32 @@
-import javax.swing.JPanel;
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class Square extends JPanel{
+import javax.swing.JPanel;
+
+public class Square extends JPanel {
     private final String SQUARE_COLOR;
     private DragonTower dTower;
     private boolean selected;
+    int row;
+    int column;
 
-    public Square(String color, DragonTower dTower) {
+    public Square(String color, DragonTower dTower, int rowY, int columnX) {
         SQUARE_COLOR = color;
         this.dTower = dTower;
         selected = false;
+        row = rowY;
+        column = columnX;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
     }
 
     public void setSelected(boolean s) {
@@ -29,7 +41,7 @@ public class Square extends JPanel{
         return dTower;
     }
 
-    public void setDragonTower(String color, String team_color){
+    public void setDragonTower(String color, String team_color) {
         dTower = new DragonTower(color, team_color);
     }
 
@@ -37,35 +49,36 @@ public class Square extends JPanel{
         dTower = d;
     }
 
-    public void resetdTower(){
+    public void resetdTower() {
         dTower = null;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-        Graphics2D g2D = (Graphics2D)g;
+        Graphics2D g2D = (Graphics2D) g;
         setColor(g2D, SQUARE_COLOR);
         g2D.fillRect(0, 0, getWidth(), getHeight());
-        if(dTower != null) {
-            if(dTower.getTeam() == "black")
+        if (dTower != null) {
+            if (dTower.getTeam() == "black")
                 g2D.setColor(Color.BLACK);
             else
                 g2D.setColor(new Color(245, 245, 245));
             g2D.fillOval(9, 9, 50, 50);
-            if(selected)
+            if (selected)
                 g2D.setColor(Color.LIGHT_GRAY);
             else
                 g2D.setColor(Color.DARK_GRAY);
             g2D.setStroke(new BasicStroke(3));
             g2D.drawOval(9, 9, 50, 50);
             setColor(g2D, dTower.getColor());
-            g2D.setFont(new Font("SansSerif", Font.BOLD, 23));;
+            g2D.setFont(new Font("SansSerif", Font.BOLD, 23));
+            ;
             g2D.drawString(getSymbol(), 22, 41);
         }
     }
 
     private void setColor(Graphics2D g2D, String color) {
-        switch(color) {
+        switch (color) {
             case "orange":
                 g2D.setColor(new Color(245, 132, 40));
                 break;
@@ -91,13 +104,13 @@ public class Square extends JPanel{
                 g2D.setColor(new Color(84, 63, 48));
                 break;
             default:
-                g2D.setColor(new Color(230, 230, 230)); //if this happens, somethings fucked up
+                g2D.setColor(new Color(230, 230, 230)); // if this happens, somethings fucked up
                 break;
         }
     }
 
     private String getSymbol() {
-        switch(dTower.getColor()) {
+        switch (dTower.getColor()) {
             case "orange":
                 return "橙";
             case "blue":

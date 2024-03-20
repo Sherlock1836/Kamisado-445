@@ -8,10 +8,10 @@ public class MoveValidator {
 
     public static boolean checkValidityOf(Square[] move, Board board) {
         // Extract move coordinates
-        int startX = move[0].getX();
-        int startY = move[0].getY();
-        int endX = move[1].getX();
-        int endY = move[1].getY();
+        int startX = move[0].getColumn();
+        int startY = move[0].getRow();
+        int endX = move[1].getColumn();
+        int endY = move[1].getRow();
 
         // Extract current player color
         currentPlayerColor = move[0].getDragonTower().getColor();
