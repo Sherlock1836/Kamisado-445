@@ -44,6 +44,7 @@ public class GraphicsWindow extends JFrame{
         setVisible(true);
     }
 
+    //methods to interface with kamisado and back end or somn
     public void showPanel(String panel) {
         cl.show(cards, panel);
     }

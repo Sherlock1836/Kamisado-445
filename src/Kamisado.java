@@ -32,7 +32,7 @@ public class Kamisado {
         }
     }
 
-    public static void gameLoop(Player bPlayer, Player wPlayer) {
+    private static void gameLoop(Player bPlayer, Player wPlayer) {
         while (!gameOver) {
             while (move == null) {
                 move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
@@ -58,6 +58,7 @@ public class Kamisado {
         move[0].setDragonTower(null);
     }
 
+    //methods to interface with gui or somn
     public static void showPanel(String panel) {
         gWindow.showPanel(panel);
     }

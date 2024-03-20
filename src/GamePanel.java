@@ -16,6 +16,7 @@ public class GamePanel extends JPanel {
     private JPanel buttonPanel;
     private JButton returnToMenu;
     private JButton start;
+    private JButton reset;
 
     private Square selectedSquare;      // Store the selected square for dragging
     private Square destinationSquare;   //Store destination square
@@ -57,6 +58,7 @@ public class GamePanel extends JPanel {
         buttonPanel = new JPanel();
         buttonPanel.setOpaque(false);
         buttonPanel.setPreferredSize(new Dimension(100, 200));
+
         start = new JButton("Start");
         start.addActionListener(new ActionListener() {
             @Override
@@ -65,6 +67,15 @@ public class GamePanel extends JPanel {
             }
         });
         buttonPanel.add(start);
+
+        reset = new JButton("Reset");
+        reset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                Kamisado.setGameOver(true);
+            }
+        });
+        buttonPanel.add(reset);
 
         returnToMenu = new JButton("Back to Menu");
         returnToMenu.addActionListener(new ActionListener() {
@@ -95,15 +106,8 @@ public class GamePanel extends JPanel {
                 destinationSquare = (Square) e.getSource();
             }
         }
-
-        /*@Override
-        public void mouseReleased(MouseEvent e) {
-            selectedSquare.setSelected(false); // Remove highlight when mouse released
-            //selectedSquare.repaint(); //probably will need need this 
-            selectedSquare = null; // Reset selected square
-        }*/
     }
-
+    //IF WE WANT DRAGGING AT SOME POINT WE CAN USE THISSS
     // Inner class for mouse motion listener implementation
     //All this set to change, feel free to edit
     /*private class SquareMouseMotionListener extends MouseAdapter {
