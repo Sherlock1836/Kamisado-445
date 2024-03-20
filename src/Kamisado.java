@@ -6,7 +6,6 @@
 public class Kamisado {
     private static Board gameBoard;
     private static GraphicsWindow gWindow;
-    private static MoveValidator moveValidator;
     private static boolean gameOver;
     private static Square[] move;
     public static boolean isBlacksTurn; // is public so square mouse listener can check team before allowing selection
@@ -17,7 +16,6 @@ public class Kamisado {
         gameBoard = new Board();
         gameBoard.initializeBoard();
         gWindow = new GraphicsWindow(gameBoard);
-        moveValidator = new MoveValidator();
 
         while (true) { // continually check to see if start button has been clicked
             if (!gameOver) { // once start has been clicked, reset board and enter the game loop
@@ -42,7 +40,7 @@ public class Kamisado {
                 } catch (InterruptedException e) {
                 }
             }
-            if (moveValidator.checkValidityOf(move)) {
+            if (MoveValidator.checkValidityOf(move)) {
                 executeMove(move);
                 isBlacksTurn = !isBlacksTurn;
             }
