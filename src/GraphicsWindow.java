@@ -56,4 +56,8 @@ public class GraphicsWindow extends JFrame{
     public Square[] getMove() {
         return gp.getMove();
     }
+
+    public void updateTurnLabel(String s) {
+        gp.setTurnLabel(s);
+    }
 }

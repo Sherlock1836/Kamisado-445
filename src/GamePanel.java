@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -9,6 +10,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class GamePanel extends JPanel {
     private BackgroundPanel boardPanelHolder;
@@ -17,6 +19,7 @@ public class GamePanel extends JPanel {
     private JButton returnToMenu;
     private JButton start;
     private JButton reset;
+    private JLabel turnLabel;
 
     private Square selectedSquare;      // Store the selected square for dragging
     private Square destinationSquare;   //Store destination square
@@ -59,6 +62,11 @@ public class GamePanel extends JPanel {
         buttonPanel.setOpaque(false);
         buttonPanel.setPreferredSize(new Dimension(100, 200));
 
+        turnLabel = new JLabel("            ");
+        turnLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        turnLabel.setOpaque(false);
+        buttonPanel.add(turnLabel);
+
         start = new JButton("Start");
         start.addActionListener(new ActionListener() {
             @Override
@@ -73,6 +81,7 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent event) {
                 Kamisado.setGameOver(true);
+                setTurnLabel("           ");
                 Kamisado.clearBoard();
             }
         });
@@ -82,6 +91,9 @@ public class GamePanel extends JPanel {
         returnToMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Kamisado.setGameOver(true);
+                setTurnLabel("           ");
+                Kamisado.clearBoard();
                 Kamisado.showPanel("MenuPanel");
             }
         });
@@ -107,6 +119,10 @@ public class GamePanel extends JPanel {
                 destinationSquare = (Square) e.getSource();
             }
         }
+    }
+
+    public void setTurnLabel(String t) {
+        turnLabel.setText(t);
     }
     //IF WE WANT DRAGGING AT SOME POINT WE CAN USE THISSS
     // Inner class for mouse motion listener implementation
