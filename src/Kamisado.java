@@ -18,36 +18,43 @@ public class Kamisado {
         gameBoard = new Board();
         gameBoard.initializeBoard();
         gWindow = new GraphicsWindow(gameBoard);
-
         while (true) { // continually check to see if start button has been clicked
             if (!gameOver) { // once start has been clicked, reset board and enter the game loop
+                isBlacksTurn = true;
                 gameBoard.resetBoard();
+                //reset player scores
                 gWindow.updateGamePanel();
                 gameLoop(blackPlayer, whitePlayer);
             }
             try {
                 Thread.sleep(250); // sleep so that while loop doesn't kill itself
-                System.out.println("catch");
+                System.out.println("wait");
             } catch (InterruptedException e) {
+                System.out.println("catch");
             }
         }
     }
 
     private static void gameLoop(Player bPlayer, Player wPlayer) {
         while (!gameOver) {
+            System.out.println("gameloop");
             move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
-            while (move == null) {
+            while (move == null && !gameOver) {
                 move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
                 try {
+                    System.out.println("Getting move...");
                     Thread.sleep(100); // sleep so that while loop doesn't kill itself
                 } catch (InterruptedException e) {
                 }
             }
-            System.out.print("" + move[0].getRow() + " " + move[0].getColumn());
-            System.out.println(" to " + move[1].getRow() + " " + move[1].getColumn());
-            if (MoveValidator.checkValidityOf(move, gameBoard)) {
-                executeMove(move);
-                isBlacksTurn = !isBlacksTurn;
+            if(move != null){
+                System.out.print("" + move[0].getRow() + " " + move[0].getColumn());
+                System.out.println(" to " + move[1].getRow() + " " + move[1].getColumn());
+            
+                if (MoveValidator.checkValidityOf(move, gameBoard)) {
+                    executeMove(move);
+                    isBlacksTurn = !isBlacksTurn;
+                }
             }
             // check if a piece made it to a homerow and update piece and score(attached to
             // player object) accordingly
@@ -78,6 +85,10 @@ public class Kamisado {
 
     public static Square[] getMoveFromGUI() {
         return gWindow.getMove();
+    }
+
+    public static void clearBoard() {
+        gameBoard.clearBoard();
     }
 
     public static void setPlayers(boolean isBotGame) {

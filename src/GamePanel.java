@@ -73,6 +73,7 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent event) {
                 Kamisado.setGameOver(true);
+                Kamisado.clearBoard();
             }
         });
         buttonPanel.add(reset);

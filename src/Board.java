@@ -46,8 +46,16 @@ public class Board {
         }
     }
 
+    public void clearBoard() {
+        for (int row = 0; row < boardArray.length; row++) {
+            for (int column = 0; column < boardArray[row].length; column++) {
+                boardArray[row][column].setDragonTower(null);
+            }
+        }
+    }
+
     public void resetBoard() {
-        for (int row = 0; row < boardArray.length; row += 7) {
+        for (int row = 0; row < boardArray.length; row+=7) {
             for (int column = 0; column < boardArray[row].length; column++) {
                 // set dragon towers accordingly
                 String tColor;
