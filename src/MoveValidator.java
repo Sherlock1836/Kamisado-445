@@ -1,7 +1,9 @@
 public class MoveValidator {
     private static boolean isFirstTurn = true;
+    private static String temp;
     private static String lastMovedOpponentColor = null;
     private static String currentPlayerColor;
+    private static String currentTeamColor;
 
     private MoveValidator() {
     }
@@ -12,6 +14,11 @@ public class MoveValidator {
         int startY = move[0].getRow();
         int endX = move[1].getColumn();
         int endY = move[1].getRow();
+
+        temp = move[1].getColor();
+
+        currentTeamColor = board.getBoardArray()[startY][startX].getDragonTower().getTeam().toLowerCase();
+        currentPlayerColor = board.getBoardArray()[startY][startX].getDragonTower().getColor();
 
         // Check if the move is valid according to Kamisado rules
         boolean isValidMove = isValidMove(startX, startY, endX, endY, board);
@@ -28,8 +35,17 @@ public class MoveValidator {
         // call our various rule methods-- if path is forward, if piece did and can
         // move, if its path was clear
         // return true if all conditions are met, false otherwise
-        return canMove(startX, startY, endX, endY, board) && isClear(startX, startY, endX, endY, board)
+        if (!isFirstTurn && currentPlayerColor != lastMovedOpponentColor) {
+            System.out.println("Incorrect Piece Color");
+            return false;
+        }
+        boolean isValid = canMove(startX, startY, endX, endY, board) && isClear(startX, startY, endX, endY, board)
                 && isStraight(startX, startY, endX, endY);
+
+        if (isValid) {
+            updateLastMovedOpponentColor(temp);
+        }
+        return isValid;
     }
 
     private static void updateLastMovedOpponentColor(String color) {
@@ -61,17 +77,39 @@ public class MoveValidator {
         int deltaX = endX - startX;
         int deltaY = endY - startY;
 
-        // Check if the movement is vertical forward or diagonal forward
-        if (deltaX == 0 && deltaY > 0) {
-            // Vertical forward movement
-            return true;
-        } else if (deltaX != 0 && deltaY != 0 && Math.abs(deltaX) == Math.abs(deltaY)) {
-            // Diagonal forward movement
-            return true;
+        if (currentTeamColor == "white") {
+            if (deltaY > 0) {
+                System.out.println("White moved backwards");
+                return false;
+            } else if (deltaY < 0 && deltaX == 0) {
+                System.out.println("White: Vertical Forward");
+                return true;
+            } else if (Math.abs(deltaY / deltaX) == 1) {
+                System.out.println("White: Diagonal Forward");
+                return true;
+            } else {
+                System.out.println("Invalid Movement 1");
+                return false;
+            }
+        } else if (currentTeamColor == "black") {
+            if (deltaY < 0) {
+                System.out.println("Black moved backwards");
+                return false;
+            } else if (deltaY > 0 && deltaX == 0) {
+                System.out.println("Black: Vertical Forward");
+                return true;
+            } else if (Math.abs(deltaY / deltaX) == 1) {
+                System.out.println("Black: Diagonal Forward");
+                return true;
+            } else {
+                System.out.println("Invalid Movement 2");
+                return false;
+            }
         } else {
-            // Not a valid straight movement
+            System.out.println("Invalid Movement 3");
             return false;
         }
+
     }
 
     private static boolean isClear(int startX, int startY, int endX, int endY, Board board) {
@@ -105,5 +143,4 @@ public class MoveValidator {
         // no pieces in the way, move is clear
         return true;
     }
-
 }

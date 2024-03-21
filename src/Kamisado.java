@@ -22,13 +22,13 @@ public class Kamisado {
             if (!gameOver) { // once start has been clicked, reset board and enter the game loop
                 isBlacksTurn = true;
                 gameBoard.resetBoard();
-                //reset player scores
+                // reset player scores
                 gWindow.updateGamePanel();
                 gameLoop(blackPlayer, whitePlayer);
             }
             try {
                 Thread.sleep(250); // sleep so that while loop doesn't kill itself
-                System.out.println("wait");
+                // System.out.println("wait");
             } catch (InterruptedException e) {
                 System.out.println("catch");
             }
@@ -37,22 +37,22 @@ public class Kamisado {
 
     private static void gameLoop(Player bPlayer, Player wPlayer) {
         while (!gameOver) {
-            System.out.println("gameloop");
+            // System.out.println("gameloop");
             String labelTurn = isBlacksTurn ? "Black's Turn" : "White's Turn";
             gWindow.updateTurnLabel(labelTurn);
             move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
             while (move == null && !gameOver) {
                 move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
                 try {
-                    System.out.println("Getting move...");
+                    // System.out.println("Getting move...");
                     Thread.sleep(100); // sleep so that while loop doesn't kill itself
                 } catch (InterruptedException e) {
                 }
             }
-            if(move != null){
+            if (move != null) {
                 System.out.print("" + move[0].getRow() + " " + move[0].getColumn());
                 System.out.println(" to " + move[1].getRow() + " " + move[1].getColumn());
-            
+
                 if (MoveValidator.checkValidityOf(move, gameBoard)) {
                     executeMove(move);
                     isBlacksTurn = !isBlacksTurn;
