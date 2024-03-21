@@ -20,6 +20,8 @@ public class Kamisado {
         gWindow = new GraphicsWindow(gameBoard);
         while (true) { // continually check to see if start button has been clicked
             if (!gameOver) { // once start has been clicked, reset board and enter the game loop
+                whitePlayer.resetScore();
+                blackPlayer.resetScore();
                 isBlacksTurn = true;
                 gameBoard.resetBoard();
                 // reset player scores
@@ -55,16 +57,35 @@ public class Kamisado {
 
                 if (MoveValidator.checkValidityOf(move, gameBoard)) {
                     executeMove(move);
+                    if(move[1].getRow() == 0 || move[1].getRow() == 8){
+                        move[1].getDragonTower().promote();
+                        if(isBlacksTurn)
+                            blackPlayer.addToScore(move[1].getDragonTower().getValue());
+                        else
+                            whitePlayer.addToScore(move[1].getDragonTower().getValue());
+                    }
                     isBlacksTurn = !isBlacksTurn;
                 }
+                checkForWin(); //checks for win and do what needs to be done 
             }
-            // check if a piece made it to a homerow and update piece and score(attached to
-            // player object) accordingly
-            // either display win screen or start new round
-            gWindow.updateGamePanel(); // update gui
+            gWindow.updateGamePanel(); // update gui (just the board...labels have to be manually changed in the loop)
         }
         // do whatever needs to be done after game ends (remove all pieces, show end
         // screen, etc)
+    }
+
+    private static void checkForWin(/*add a score parameter if we add new game mode */) {
+        if(whitePlayer.getScore() > 0) {
+            gameOver = !gameOver;
+            gWindow.updateTurnLabel("White Wins!");
+            //set winner (boolean in winner Panel)
+            //showPanel("WinnerPanel");
+        } else if(blackPlayer.getScore() > 0) {
+            gameOver = !gameOver;
+            gWindow.updateTurnLabel("Black Wins!");;
+            //set winner
+            //showPanel("WinnerPanel");
+        }   
     }
 
     private static void executeMove(Square[] move) {

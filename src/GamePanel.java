@@ -83,6 +83,7 @@ public class GamePanel extends JPanel {
                 Kamisado.setGameOver(true);
                 setTurnLabel("           ");
                 Kamisado.clearBoard();
+                repaint();
             }
         });
         buttonPanel.add(reset);
