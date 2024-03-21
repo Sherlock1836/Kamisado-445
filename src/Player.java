@@ -4,6 +4,7 @@ public class Player {
 
     public Player(boolean isBot) {
         this.isBot = isBot;
+        score = 0;
     }
 
     public Square[] getMove() {
@@ -11,6 +12,18 @@ public class Player {
             return calculateMove();
         else
             return Kamisado.getMoveFromGUI();
+    }
+
+    public void addToScore(int n) {
+        score += n;
+    }
+
+    public void resetScore() {
+        score = 0;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     //bots algorithm

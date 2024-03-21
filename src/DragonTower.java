@@ -39,10 +39,11 @@ public class DragonTower {
         // increase value
     }
 
-    private static void promote() {
+    public void promote() {
         // if dtower reaches end of board, promote, set sumo to True, increase value
         // not doing anything with this for now because I might move class
-
+        value = 1;
+        sumo = true;
     }
 
 }
