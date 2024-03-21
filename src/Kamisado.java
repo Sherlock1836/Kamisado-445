@@ -77,6 +77,7 @@ public class Kamisado {
 
     public static void endGame() {
         gWindow.dispose();
+        System.exit(0);
     }
 
     public static void setGameOver(boolean b) {
