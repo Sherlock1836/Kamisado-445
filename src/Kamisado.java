@@ -59,14 +59,14 @@ public class Kamisado {
                     executeMove(move);
                     if(move[1].getRow() == 0 || move[1].getRow() == 7){
                         move[1].getDragonTower().promote();
-                        if(isBlacksTurn)
+                        if (isBlacksTurn)
                             blackPlayer.addToScore(move[1].getDragonTower().getValue());
                         else
                             whitePlayer.addToScore(move[1].getDragonTower().getValue());
                     }
                     isBlacksTurn = !isBlacksTurn;
                 }
-                checkForWin(); //checks for win and do what needs to be done 
+                checkForWin(); // checks for win and do what needs to be done
             }
             gWindow.updateGamePanel(); // update gui (just the board...labels have to be manually changed in the loop)
         }
@@ -74,18 +74,19 @@ public class Kamisado {
         // screen, etc)
     }
 
-    private static void checkForWin(/*add a score parameter if we add new game mode */) {
-        if(whitePlayer.getScore() > 0) {
+    private static void checkForWin(/* add a score parameter if we add new game mode */) {
+        if (whitePlayer.getScore() > 0) {
             gameOver = !gameOver;
             gWindow.updateTurnLabel("White Wins!");
-            //set winner (boolean in winner Panel)
-            //showPanel("WinnerPanel");
-        } else if(blackPlayer.getScore() > 0) {
+            // set winner (boolean in winner Panel)
+            // showPanel("WinnerPanel");
+        } else if (blackPlayer.getScore() > 0) {
             gameOver = !gameOver;
-            gWindow.updateTurnLabel("Black Wins!");;
-            //set winner
-            //showPanel("WinnerPanel");
-        }   
+            gWindow.updateTurnLabel("Black Wins!");
+            ;
+            // set winner
+            // showPanel("WinnerPanel");
+        }
     }
 
     private static void executeMove(Square[] move) {

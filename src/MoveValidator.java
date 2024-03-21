@@ -116,12 +116,19 @@ public class MoveValidator {
         int deltaY = endY - startY;
         int deltaX = endX - startX;
 
+        if (board.getBoardArray()[endY][endX].getDragonTower() != null) {
+            System.out.println("Piece already at location");
+            return false;
+        }
+
         // Check direction of movement-- only forward vertical or forward diagonal
         if (deltaX == 0) {
             // Vertical
+
             int yIncrement = Integer.compare(deltaY, 0);
             for (int y = startY + yIncrement; y != endY; y += yIncrement) {
                 if (board.getBoardArray()[y][startX].getDragonTower() != null) {
+                    System.out.println("There's a piece in the way");
                     return false; // there's a piece in the way
                 }
             }
@@ -132,6 +139,7 @@ public class MoveValidator {
             for (int x = startX + xIncrement, y = startY + yIncrement; x != endX
                     && y != endY; x += xIncrement, y += yIncrement) {
                 if (board.getBoardArray()[y][x].getDragonTower() != null) {
+                    System.out.println("Way is not clear");
                     return false; // there's a piece in the way
                 }
             }
