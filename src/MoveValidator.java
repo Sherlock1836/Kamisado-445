@@ -4,6 +4,7 @@ public class MoveValidator {
     private static String lastMovedOpponentColor = null;
     private static String currentPlayerColor;
     private static String currentTeamColor;
+    private static boolean turnChange = false;
 
     private MoveValidator() {
     }
@@ -73,6 +74,7 @@ public class MoveValidator {
                         board.getBoardArray()[startY + 1][startX - 1].getDragonTower() != null) {
                     return true;
                 } else {
+                    setTurnChange(true);
                     return false;
                 }
             } else if (currentTeamColor == "white") {
@@ -81,9 +83,11 @@ public class MoveValidator {
                         board.getBoardArray()[startY - 1][startX - 1].getDragonTower() != null) {
                     return true;
                 } else {
+                    setTurnChange(true);
                     return false;
                 }
             } else {
+                setTurnChange(true);
                 return false;
             }
         }
@@ -167,5 +171,14 @@ public class MoveValidator {
 
         // no pieces in the way, move is clear
         return true;
+    }
+
+    public static void setTurnChange(boolean n) {
+        turnChange = n;
+
+    }
+
+    public static boolean getTurnChange() {
+        return turnChange;
     }
 }

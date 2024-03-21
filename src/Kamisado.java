@@ -58,7 +58,7 @@ public class Kamisado {
 
                 if (MoveValidator.checkValidityOf(move, gameBoard)) {
                     executeMove(move);
-                    if(move[1].getRow() == 0 || move[1].getRow() == 7){
+                    if (move[1].getRow() == 0 || move[1].getRow() == 7) {
                         move[1].getDragonTower().promote();
                         if (isBlacksTurn)
                             blackPlayer.addToScore(move[1].getDragonTower().getValue());
@@ -68,6 +68,9 @@ public class Kamisado {
                     isBlacksTurn = !isBlacksTurn;
                 }
                 checkForWin(); // checks for win and do what needs to be done
+                if (MoveValidator.getTurnChange()) {
+                    isBlacksTurn = !isBlacksTurn;
+                }
             }
             gWindow.updateGamePanel(); // update gui (just the board...labels have to be manually changed in the loop)
         }
@@ -126,4 +129,5 @@ public class Kamisado {
             blackPlayer = new Player(false);
         }
     }
+
 }
