@@ -62,10 +62,22 @@ public class MoveValidator {
             return true;
         } else {
             // if no possible moves, return true
-            if (board.getBoardArray()[startY + 1][startX].getDragonTower() != null &&
-                    board.getBoardArray()[startY + 1][startX + 1].getDragonTower() != null &&
-                    board.getBoardArray()[startY + 1][startX - 1].getDragonTower() != null) {
-                return true;
+            if (currentTeamColor == "black") {
+                if (board.getBoardArray()[startY + 1][startX].getDragonTower() != null &&
+                        board.getBoardArray()[startY + 1][startX + 1].getDragonTower() != null &&
+                        board.getBoardArray()[startY + 1][startX - 1].getDragonTower() != null) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if (currentTeamColor == "white") {
+                if (board.getBoardArray()[startY - 1][startX].getDragonTower() != null &&
+                        board.getBoardArray()[startY - 1][startX + 1].getDragonTower() != null &&
+                        board.getBoardArray()[startY - 1][startX - 1].getDragonTower() != null) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
