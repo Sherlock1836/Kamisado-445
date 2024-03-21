@@ -57,7 +57,7 @@ public class Kamisado {
 
                 if (MoveValidator.checkValidityOf(move, gameBoard)) {
                     executeMove(move);
-                    if (move[1].getRow() == 0 || move[1].getRow() == 8) {
+                    if(move[1].getRow() == 0 || move[1].getRow() == 7){
                         move[1].getDragonTower().promote();
                         if (isBlacksTurn)
                             blackPlayer.addToScore(move[1].getDragonTower().getValue());
