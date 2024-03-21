@@ -24,6 +24,7 @@ public class Kamisado {
                 blackPlayer.resetScore();
                 isBlacksTurn = true;
                 gameBoard.resetBoard();
+                MoveValidator.resetValidator();
                 // reset player scores
                 gWindow.updateGamePanel();
                 gameLoop(blackPlayer, whitePlayer);

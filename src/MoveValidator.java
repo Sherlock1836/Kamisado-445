@@ -8,6 +8,11 @@ public class MoveValidator {
     private MoveValidator() {
     }
 
+    public static void resetValidator() {
+        isFirstTurn = true;
+        lastMovedOpponentColor = null;
+    }
+
     public static boolean checkValidityOf(Square[] move, Board board) {
         // Extract move coordinates
         int startX = move[0].getColumn();
