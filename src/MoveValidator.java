@@ -12,6 +12,9 @@ public class MoveValidator {
     public static void resetValidator() {
         isFirstTurn = true;
         lastMovedOpponentColor = null;
+        turnChange = false;
+        currentPlayerColor = null;
+        currentTeamColor = null;
     }
 
     public static boolean checkValidityOf(Square[] move, Board board) {
@@ -30,7 +33,7 @@ public class MoveValidator {
         boolean isValidMove = isValidMove(startX, startY, endX, endY, board);
 
         // If it's the first turn, end it after the first move
-        if (isFirstTurn) {
+        if (isFirstTurn && isValidMove) {
             endFirstTurn();
         }
 
@@ -75,6 +78,7 @@ public class MoveValidator {
                     return true;
                 } else {
                     setTurnChange(true);
+                    System.out.println("CHNG TURN 1");
                     return false;
                 }
             } else if (currentTeamColor == "white") {
@@ -83,10 +87,12 @@ public class MoveValidator {
                         board.getBoardArray()[startY - 1][startX - 1].getDragonTower() != null) {
                     return true;
                 } else {
+                    System.out.println("CHNG TURN 2");
                     setTurnChange(true);
                     return false;
                 }
             } else {
+                System.out.println("CHNG TURN 3");
                 setTurnChange(true);
                 return false;
             }

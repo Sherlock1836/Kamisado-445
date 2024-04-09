@@ -43,6 +43,7 @@ public class Kamisado {
             // System.out.println("gameloop");
             String labelTurn = isBlacksTurn ? "Black's Turn" : "White's Turn";
             gWindow.updateTurnLabel(labelTurn);
+            
             move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
             while (move == null && !gameOver) {
                 move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
@@ -52,22 +53,17 @@ public class Kamisado {
                 } catch (InterruptedException e) {
                 }
             }
+            
             if (move != null) {
                 System.out.print("" + move[0].getRow() + " " + move[0].getColumn());
                 System.out.println(" to " + move[1].getRow() + " " + move[1].getColumn());
 
                 if (MoveValidator.checkValidityOf(move, gameBoard)) {
                     executeMove(move);
-                    if (move[1].getRow() == 0 || move[1].getRow() == 7) {
-                        move[1].getDragonTower().promote();
-                        if (isBlacksTurn)
-                            blackPlayer.addToScore(move[1].getDragonTower().getValue());
-                        else
-                            whitePlayer.addToScore(move[1].getDragonTower().getValue());
-                    }
+                    checkForPromotion();
                     isBlacksTurn = !isBlacksTurn;
                 }
-                checkForWin(); // checks for win and do what needs to be done
+                checkForWin(); // check for win and do what needs to be done
                 if (MoveValidator.getTurnChange()) {
                     isBlacksTurn = !isBlacksTurn;
                 }
@@ -76,6 +72,16 @@ public class Kamisado {
         }
         // do whatever needs to be done after game ends (remove all pieces, show end
         // screen, etc)
+    }
+
+    private static void checkForPromotion() {
+        if (move[1].getRow() == 0 || move[1].getRow() == 7) {
+            move[1].getDragonTower().promote();
+            if (isBlacksTurn)
+                blackPlayer.addToScore(move[1].getDragonTower().getValue());
+            else
+                whitePlayer.addToScore(move[1].getDragonTower().getValue());
+        }
     }
 
     private static void checkForWin(/* add a score parameter if we add new game mode */) {
