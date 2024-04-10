@@ -3,6 +3,7 @@
  * CSC 445 Final Project
  */
 
+
 public class Kamisado {
     private static Board gameBoard;
     private static GraphicsWindow gWindow;

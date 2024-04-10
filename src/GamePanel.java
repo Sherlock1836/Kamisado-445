@@ -107,17 +107,24 @@ public class GamePanel extends JPanel {
     private class SquareMouseListener extends MouseAdapter {
         @Override
         public void mousePressed(MouseEvent e) {
-            if(selectedSquare == null) {
+            if (selectedSquare == null) {
                 selectedSquare = (Square) e.getSource();
-                if((selectedSquare.getDragonTower() != null)
-                  && ((selectedSquare.getDragonTower().getTeam() == "black") == Kamisado.isBlacksTurn)) {
-                    selectedSquare.setSelected(true);// Highlight selected square
-                    selectedSquare.repaint(); //probably will need this
+                if ((selectedSquare.getDragonTower() != null)
+                        && ((selectedSquare.getDragonTower().getTeam() == "black") == Kamisado.isBlacksTurn)) {
+                    selectedSquare.setSelected(true); // Highlight selected square
+                    selectedSquare.repaint(); // probably will need this
                 } else {
                     selectedSquare = null;
                 }
             } else {
-                destinationSquare = (Square) e.getSource();
+                Square clickedSquare = (Square) e.getSource();
+                if (clickedSquare == selectedSquare) {
+                    // If the destination square is the same as the selected square, reset selectedSquare
+                    selectedSquare.setSelected(false);
+                    selectedSquare = null;
+                } else {
+                    destinationSquare = clickedSquare;
+                }
             }
         }
     }

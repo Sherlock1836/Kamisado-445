@@ -48,6 +48,12 @@ public class MoveValidator {
             System.out.println("Incorrect Piece Color");
             return false;
         }
+        // Check if the movement is sideways
+        if (startY == endY) {
+            System.out.println("Sideways movement is not allowed");
+            return false;
+        }
+
         boolean isValid = canMove(startX, startY, endX, endY, board) && isClear(startX, startY, endX, endY, board)
                 && isStraight(startX, startY, endX, endY);
 
@@ -136,7 +142,6 @@ public class MoveValidator {
             System.out.println("Invalid Movement 3");
             return false;
         }
-
     }
 
     private static boolean isClear(int startX, int startY, int endX, int endY, Board board) {
