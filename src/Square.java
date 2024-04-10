@@ -79,7 +79,7 @@ public class Square extends JPanel {
 
     public static Color setColor(String color) {
         if (color == null)
-            return Color.black;
+            return Color.DARK_GRAY;
         switch (color) {
             case "orange":
                 return new Color(245, 132, 40);

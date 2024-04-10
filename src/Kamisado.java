@@ -3,6 +3,7 @@
  * CSC 445 Final Project
  */
 
+import java.awt.Color;
 
 public class Kamisado {
     private static Board gameBoard;
@@ -88,13 +89,12 @@ public class Kamisado {
     private static void checkForWin(/* add a score parameter if we add new game mode */) {
         if (whitePlayer.getScore() > 0) {
             gameOver = !gameOver;
-            gWindow.updateTurnLabel("White Wins!");
+            gWindow.updateTurnLabel("White Wins!", Color.WHITE);
             // set winner (boolean in winner Panel)
             // showPanel("WinnerPanel");
         } else if (blackPlayer.getScore() > 0) {
             gameOver = !gameOver;
-            gWindow.updateTurnLabel("Black Wins!");
-            ;
+            gWindow.updateTurnLabel("Black Wins!", Color.BLACK);
             // set winner
             // showPanel("WinnerPanel");
         }

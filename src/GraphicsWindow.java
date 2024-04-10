@@ -1,4 +1,5 @@
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -59,5 +60,9 @@ public class GraphicsWindow extends JFrame{
 
     public void updateTurnLabel(String s) {
         gp.setTurnLabel(s);
+    }
+
+    public void updateTurnLabel(String s, Color c) {
+        gp.setTurnLabel(s, c);
     }
 }

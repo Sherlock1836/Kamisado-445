@@ -65,7 +65,7 @@ public class GamePanel extends JPanel {
         turnLabel = new JLabel(" Click Start "); //"            "
         turnLabel.setFont(new Font("Arial", Font.BOLD, 16));
         turnLabel.setOpaque(true);
-        turnLabel.setForeground(Color.BLACK);
+        turnLabel.setForeground(Color.DARK_GRAY);
         turnLabel.setBackground(new Color(255, 255, 255, 95));
         buttonPanel.add(turnLabel);
 
@@ -83,7 +83,7 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent event) {
                 Kamisado.setGameOver(true);
-                setTurnLabel(" Click Start ");
+                setTurnLabel(" Click Start ", Color.DARK_GRAY);
                 Kamisado.clearBoard();
                 repaint();
             }
@@ -95,7 +95,7 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Kamisado.setGameOver(true);
-                setTurnLabel(" Click Start ");
+                setTurnLabel(" Click Start ", Color.DARK_GRAY);
                 Kamisado.clearBoard();
                 Kamisado.showPanel("MenuPanel");
             }
@@ -135,6 +135,11 @@ public class GamePanel extends JPanel {
     public void setTurnLabel(String t) {
         turnLabel.setText(t);
         turnLabel.setForeground(Square.setColor(MoveValidator.getLMOColor()));
+    }
+
+    public void setTurnLabel(String t, Color c) {
+        turnLabel.setText(t);
+        turnLabel.setForeground(c);
     }
     //IF WE WANT DRAGGING AT SOME POINT WE CAN USE THISSS
     // Inner class for mouse motion listener implementation
