@@ -1,12 +1,16 @@
 public class MoveValidator {
     private static boolean isFirstTurn = true;
     private static String temp;
-    private static String lastMovedOpponentColor = null;
+    public static String lastMovedOpponentColor = null;
     private static String currentPlayerColor;
     private static String currentTeamColor;
     private static boolean turnChange = false;
 
     private MoveValidator() {
+    }
+
+    public static String getLMOColor() {
+        return lastMovedOpponentColor;
     }
 
     public static void resetValidator() {

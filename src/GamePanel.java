@@ -132,6 +132,7 @@ public class GamePanel extends JPanel {
 
     public void setTurnLabel(String t) {
         turnLabel.setText(t);
+        turnLabel.setForeground(Square.setColor(MoveValidator.getLMOColor()));
     }
     //IF WE WANT DRAGGING AT SOME POINT WE CAN USE THISSS
     // Inner class for mouse motion listener implementation

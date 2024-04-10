@@ -56,7 +56,7 @@ public class Square extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        setColor(g2D, SQUARE_COLOR);
+        g2D.setColor(setColor(SQUARE_COLOR));
         g2D.fillRect(0, 0, getWidth(), getHeight());
         if (dTower != null) {
             if (dTower.getTeam() == "black")
@@ -70,42 +70,35 @@ public class Square extends JPanel {
                 g2D.setColor(Color.DARK_GRAY);
             g2D.setStroke(new BasicStroke(3));
             g2D.drawOval(9, 9, 50, 50);
-            setColor(g2D, dTower.getColor());
+            g2D.setColor(setColor(dTower.getColor()));
             g2D.setFont(new Font("SansSerif", Font.BOLD, 23));
             ;
             g2D.drawString(getSymbol(), 22, 41);
         }
     }
 
-    private void setColor(Graphics2D g2D, String color) {
+    public static Color setColor(String color) {
+        if (color == null)
+            return Color.black;
         switch (color) {
             case "orange":
-                g2D.setColor(new Color(245, 132, 40));
-                break;
+                return new Color(245, 132, 40);
             case "blue":
-                g2D.setColor(new Color(0, 121, 194));
-                break;
+                return new Color(0, 121, 194);
             case "purple":
-                g2D.setColor(new Color(124, 66, 153));
-                break;
+                return new Color(124, 66, 153);
             case "pink":
-                g2D.setColor(new Color(239, 128, 179));
-                break;
+                return new Color(239, 128, 179);
             case "yellow":
-                g2D.setColor(new Color(235, 202, 0));
-                break;
+                return new Color(235, 202, 0);
             case "red":
-                g2D.setColor(new Color(238, 58, 67));
-                break;
+                return new Color(238, 58, 67);
             case "green":
-                g2D.setColor(new Color(0, 162, 95));
-                break;
+                return new Color(0, 162, 95);
             case "brown":
-                g2D.setColor(new Color(84, 63, 48));
-                break;
+                return new Color(84, 63, 48);
             default:
-                g2D.setColor(new Color(230, 230, 230)); // if this happens, somethings fucked up
-                break;
+                return new Color(230, 230, 230); // if this happens, somethings fucked up
         }
     }
 
