@@ -122,6 +122,7 @@ public class GamePanel extends JPanel {
                     // If the destination square is the same as the selected square, reset selectedSquare
                     selectedSquare.setSelected(false);
                     selectedSquare = null;
+                    selectedSquare.repaint();
                 } else {
                     destinationSquare = clickedSquare;
                 }
