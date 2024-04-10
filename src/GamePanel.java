@@ -121,8 +121,8 @@ public class GamePanel extends JPanel {
                 if (clickedSquare == selectedSquare) {
                     // If the destination square is the same as the selected square, reset selectedSquare
                     selectedSquare.setSelected(false);
-                    selectedSquare = null;
                     selectedSquare.repaint();
+                    selectedSquare = null;
                 } else {
                     destinationSquare = clickedSquare;
                 }
