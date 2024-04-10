@@ -42,7 +42,7 @@ public class Kamisado {
     private static void gameLoop(Player bPlayer, Player wPlayer) {
         while (!gameOver) {
             // System.out.println("gameloop");
-            String labelTurn = isBlacksTurn ? "Black's Turn" : "White's Turn";
+            String labelTurn = isBlacksTurn ? " Black's Turn " : " White's Turn ";
             gWindow.updateTurnLabel(labelTurn);
             
             move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();

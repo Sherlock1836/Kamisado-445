@@ -62,9 +62,11 @@ public class GamePanel extends JPanel {
         buttonPanel.setOpaque(false);
         buttonPanel.setPreferredSize(new Dimension(100, 200));
 
-        turnLabel = new JLabel("            ");
+        turnLabel = new JLabel(" Click Start "); //"            "
         turnLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        turnLabel.setOpaque(false);
+        turnLabel.setOpaque(true);
+        turnLabel.setForeground(Color.BLACK);
+        turnLabel.setBackground(new Color(255, 255, 255, 95));
         buttonPanel.add(turnLabel);
 
         start = new JButton("Start");
@@ -81,7 +83,7 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent event) {
                 Kamisado.setGameOver(true);
-                setTurnLabel("           ");
+                setTurnLabel(" Click Start ");
                 Kamisado.clearBoard();
                 repaint();
             }
@@ -93,7 +95,7 @@ public class GamePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Kamisado.setGameOver(true);
-                setTurnLabel("           ");
+                setTurnLabel(" Click Start ");
                 Kamisado.clearBoard();
                 Kamisado.showPanel("MenuPanel");
             }
