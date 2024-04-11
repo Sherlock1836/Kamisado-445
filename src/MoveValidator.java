@@ -55,6 +55,7 @@ public class MoveValidator {
         // call our various rule methods-- if path is forward, if piece did and can
         // move, if its path was clear
         // return true if all conditions are met, false otherwise
+        setTurnChange(false);
         if (!isFirstTurn && currentPlayerColor != lastMovedOpponentColor) {
             System.out.println("Incorrect Piece Color");
             return false;
