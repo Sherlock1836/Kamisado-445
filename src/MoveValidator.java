@@ -5,12 +5,17 @@ public class MoveValidator {
     private static String currentPlayerColor;
     private static String currentTeamColor;
     private static boolean turnChange = false;
+    private static Board gboard;
 
     private MoveValidator() {
     }
 
     public static String getLMOColor() {
         return lastMovedOpponentColor;
+    }
+
+    public static void setisFirstTurn(boolean i) {
+        isFirstTurn = i;
     }
 
     public static void resetValidator() {
@@ -27,6 +32,8 @@ public class MoveValidator {
         int startY = move[0].getRow();
         int endX = move[1].getColumn();
         int endY = move[1].getRow();
+
+        gboard = board;
 
         temp = move[1].getColor();
 
@@ -76,37 +83,34 @@ public class MoveValidator {
     }
 
     private static boolean canMove(int startX, int startY, int endX, int endY, Board board) {
-        // first check if piece moved.
-        if (startY != endY) {
-            return true;
-        } else {
-            // if no possible moves, return true
-            if (currentTeamColor == "black") {
-                if (board.getBoardArray()[startY + 1][startX].getDragonTower() != null &&
-                        board.getBoardArray()[startY + 1][startX + 1].getDragonTower() != null &&
-                        board.getBoardArray()[startY + 1][startX - 1].getDragonTower() != null) {
-                    return true;
-                } else {
-                    setTurnChange(true);
-                    System.out.println("CHNG TURN 1");
-                    return false;
-                }
-            } else if (currentTeamColor == "white") {
-                if (board.getBoardArray()[startY - 1][startX].getDragonTower() != null &&
-                        board.getBoardArray()[startY - 1][startX + 1].getDragonTower() != null &&
-                        board.getBoardArray()[startY - 1][startX - 1].getDragonTower() != null) {
-                    return true;
-                } else {
-                    System.out.println("CHNG TURN 2");
-                    setTurnChange(true);
-                    return false;
-                }
-            } else {
-                System.out.println("CHNG TURN 3");
+        // if no possible moves, return false
+        if (currentTeamColor == "black") {
+            if (board.getBoardArray()[startY + 1][startX].getDragonTower() != null &&
+                    board.getBoardArray()[startY + 1][startX + 1].getDragonTower() != null &&
+                    board.getBoardArray()[startY + 1][startX - 1].getDragonTower() != null) {
                 setTurnChange(true);
+                setisFirstTurn(true);
+                System.out.println("Turn Change");
                 return false;
+
+            } else {
+                return true;
             }
+        } else if (currentTeamColor == "white") {
+            if (board.getBoardArray()[startY - 1][startX].getDragonTower() != null &&
+                    board.getBoardArray()[startY - 1][startX + 1].getDragonTower() != null &&
+                    board.getBoardArray()[startY - 1][startX - 1].getDragonTower() != null) {
+                System.out.println("Turn Change");
+                setTurnChange(true);
+                setisFirstTurn(true);
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
         }
+
     }
 
     private static boolean isStraight(int startX, int startY, int endX, int endY) {
@@ -196,4 +200,5 @@ public class MoveValidator {
     public static boolean getTurnChange() {
         return turnChange;
     }
+
 }

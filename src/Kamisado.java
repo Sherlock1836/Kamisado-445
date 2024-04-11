@@ -45,7 +45,7 @@ public class Kamisado {
             // System.out.println("gameloop");
             String labelTurn = isBlacksTurn ? " Black's Turn " : " White's Turn ";
             gWindow.updateTurnLabel(labelTurn);
-            
+
             move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
             while (move == null && !gameOver) {
                 move = isBlacksTurn ? bPlayer.getMove() : wPlayer.getMove();
@@ -55,7 +55,7 @@ public class Kamisado {
                 } catch (InterruptedException e) {
                 }
             }
-            
+
             if (move != null) {
                 System.out.print("" + move[0].getRow() + " " + move[0].getColumn());
                 System.out.println(" to " + move[1].getRow() + " " + move[1].getColumn());
@@ -64,11 +64,13 @@ public class Kamisado {
                     executeMove(move);
                     checkForPromotion();
                     isBlacksTurn = !isBlacksTurn;
+                } else {
+                    if (MoveValidator.getTurnChange()) {
+                        isBlacksTurn = !isBlacksTurn;
+                    }
                 }
                 checkForWin(); // check for win and do what needs to be done
-                if (MoveValidator.getTurnChange()) {
-                    isBlacksTurn = !isBlacksTurn;
-                }
+
             }
             gWindow.updateGamePanel(); // update gui (just the board...labels have to be manually changed in the loop)
         }
