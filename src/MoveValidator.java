@@ -83,34 +83,48 @@ public class MoveValidator {
     }
 
     private static boolean canMove(int startX, int startY, int endX, int endY, Board board) {
-        // if no possible moves, return false
-        if (currentTeamColor == "black") {
-            if (board.getBoardArray()[startY + 1][startX].getDragonTower() != null &&
-                    board.getBoardArray()[startY + 1][startX + 1].getDragonTower() != null &&
-                    board.getBoardArray()[startY + 1][startX - 1].getDragonTower() != null) {
-                setTurnChange(true);
-                setisFirstTurn(true);
-                System.out.println("Turn Change");
-                return false;
+        // Check boundary conditions
+        boolean onLeftEdge = startX == 0;
+        boolean onRightEdge = startX == 7;
+        boolean onTopEdge = startY == 0;
+        boolean onBottomEdge = startY == 7;
 
-            } else {
-                return true;
+        // Check if no possible moves and avoid out of bounds
+        if (currentTeamColor.equals("black")) {
+            // Assuming black moves down the board
+            if (!onBottomEdge && board.getBoardArray()[startY + 1][startX].getDragonTower() != null) {
+                boolean blockedRight = onRightEdge
+                        || board.getBoardArray()[startY + 1][startX + 1].getDragonTower() != null;
+                boolean blockedLeft = onLeftEdge
+                        || board.getBoardArray()[startY + 1][startX - 1].getDragonTower() != null;
+
+                if (blockedRight && blockedLeft) {
+                    System.out.println("Turn Change");
+                    setTurnChange(true);
+                    setisFirstTurn(true);
+                    return false;
+                }
             }
-        } else if (currentTeamColor == "white") {
-            if (board.getBoardArray()[startY - 1][startX].getDragonTower() != null &&
-                    board.getBoardArray()[startY - 1][startX + 1].getDragonTower() != null &&
-                    board.getBoardArray()[startY - 1][startX - 1].getDragonTower() != null) {
-                System.out.println("Turn Change");
-                setTurnChange(true);
-                setisFirstTurn(true);
-                return false;
-            } else {
-                return true;
+        } else if (currentTeamColor.equals("white")) {
+            // Assuming white moves up the board
+            if (!onTopEdge && board.getBoardArray()[startY - 1][startX].getDragonTower() != null) {
+                boolean blockedRight = onRightEdge
+                        || board.getBoardArray()[startY - 1][startX + 1].getDragonTower() != null;
+                boolean blockedLeft = onLeftEdge
+                        || board.getBoardArray()[startY - 1][startX - 1].getDragonTower() != null;
+
+                if (blockedRight && blockedLeft) {
+                    System.out.println("Turn Change");
+                    setTurnChange(true);
+                    setisFirstTurn(true);
+                    return false;
+                }
             }
         } else {
             return false;
         }
 
+        return true; // Default return value if no blocks are found
     }
 
     private static boolean isStraight(int startX, int startY, int endX, int endY) {
