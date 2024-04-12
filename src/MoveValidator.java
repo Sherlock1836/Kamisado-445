@@ -63,6 +63,7 @@ public class MoveValidator {
         // Check if the movement is sideways
         if (startY == endY) {
             System.out.println("Sideways movement is not allowed");
+            canMove(startX, startY, endX, endY, board);
             return false;
         }
 
