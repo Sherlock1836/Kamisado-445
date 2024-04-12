@@ -66,6 +66,10 @@ public class Kamisado {
                     isBlacksTurn = !isBlacksTurn;
                 } else {
                     if (MoveValidator.getTurnChange()) {
+                        gWindow.updateTurnLabel(" No Moves ", Color.BLACK);
+                        try {
+                            Thread.sleep(3000);
+                        } catch(InterruptedException e){}
                         isBlacksTurn = !isBlacksTurn;
                     }
                 }

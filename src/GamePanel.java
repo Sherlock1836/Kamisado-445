@@ -119,14 +119,14 @@ public class GamePanel extends JPanel {
                 }
             } else {
                 Square clickedSquare = (Square) e.getSource();
-                if (clickedSquare == selectedSquare) {
-                    // If the destination square is the same as the selected square, reset selectedSquare
-                    selectedSquare.setSelected(false);
-                    selectedSquare.repaint();
-                    selectedSquare = null;
-                } else {
-                    destinationSquare = clickedSquare;
-                }
+                // if (clickedSquare == selectedSquare) {
+                //     // If the destination square is the same as the selected square, reset selectedSquare
+                //     selectedSquare.setSelected(false);
+                //     selectedSquare.repaint();
+                //     selectedSquare = null;
+                // } else {
+                destinationSquare = clickedSquare;
+                // }
             }
         }
     }
