@@ -64,10 +64,9 @@ public class GamePanel extends JPanel {
 
         turnLabel = new JLabel(" Click Start "); //"            "
         turnLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        turnLabel.setOpaque(true);
-        turnLabel.setForeground(Color.DARK_GRAY);
         turnLabel.setBackground(new Color(255, 255, 255, 95));
-        buttonPanel.add(turnLabel);
+        turnLabel.setForeground(Color.DARK_GRAY);
+        buttonPanel.add(new AlphaContainer(turnLabel));
 
         start = new JButton("Start");
         start.addActionListener(new ActionListener() {
@@ -122,14 +121,14 @@ public class GamePanel extends JPanel {
                 }
             } else {
                 Square clickedSquare = (Square) e.getSource();
-                if (clickedSquare == selectedSquare) {
-                    // If the destination square is the same as the selected square, reset selectedSquare
-                    selectedSquare.setSelected(false);
-                    selectedSquare.repaint();
-                    selectedSquare = null;
-                } else {
-                    destinationSquare = clickedSquare;
-                }
+                // if (clickedSquare == selectedSquare) {
+                //     // If the destination square is the same as the selected square, reset selectedSquare
+                //     selectedSquare.setSelected(false);
+                //     selectedSquare.repaint();
+                //     selectedSquare = null;
+                // } else {
+                destinationSquare = clickedSquare;
+                // }
             }
         }
     }
