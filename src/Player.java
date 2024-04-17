@@ -28,6 +28,9 @@ public class Player {
 
     //bots algorithm
     private Square[] calculateMove() {
-        return null;
+        Square toBeMoved = null;
+        if(MoveValidator.lastMovedOpponentColor != null)
+            toBeMoved = Kamisado.pieces.get("white " + MoveValidator.lastMovedOpponentColor).getSquare();
+        return new Square[] {toBeMoved, Kamisado.gameBoard.getBoardArray()[toBeMoved.getRow()-1][toBeMoved.getColumn()]};
     }
 }

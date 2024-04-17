@@ -42,11 +42,13 @@ public class Square extends JPanel {
     }
 
     public void setDragonTower(String color, String team_color) {
-        dTower = new DragonTower(color, team_color);
+        dTower = new DragonTower(color, team_color, this);
     }
 
     public void setDragonTower(DragonTower d) {
         dTower = d;
+        if(dTower != null)
+            dTower.setSquare(this);
     }
 
     public void resetdTower() {

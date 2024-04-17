@@ -3,12 +3,14 @@ public class DragonTower {
     private String Color;
     private String team;
     private int value;
+    private Square square;
 
-    public DragonTower(String color, String team_col) {
+    public DragonTower(String color, String team_col, Square square) {
         sumo = false;
         Color = color;
         team = team_col;
         value = 0;
+        this.square = square;
     }
 
     public boolean isSumo() {
@@ -44,6 +46,14 @@ public class DragonTower {
         // not doing anything with this for now because I might move class
         value = 1;
         sumo = true;
+    }
+
+    public void setSquare(Square square) {
+        this.square = square;
+    }
+
+    public Square getSquare() {
+        return square;
     }
 
 }

@@ -52,15 +52,18 @@ public class Board {
                 boardArray[row][column].setDragonTower(null);
             }
         }
+        Kamisado.pieces.clear();
     }
 
     public void resetBoard() {
+        Kamisado.pieces.clear();
         for (int row = 0; row < boardArray.length; row+=7) {
             for (int column = 0; column < boardArray[row].length; column++) {
                 // set dragon towers accordingly
                 String tColor;
                 tColor = (row == 0) ? "black" : "white";
                 boardArray[row][column].setDragonTower(boardArray[row][column].getColor(), tColor);
+                Kamisado.pieces.put(tColor + " " + boardArray[row][column].getColor(), boardArray[row][column].getDragonTower());
             }
         }
     }

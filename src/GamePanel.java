@@ -115,6 +115,8 @@ public class GamePanel extends JPanel {
                         && ((selectedSquare.getDragonTower().getTeam() == "black") == Kamisado.isBlacksTurn)) {
                     selectedSquare.setSelected(true); // Highlight selected square
                     selectedSquare.repaint(); // probably will need this
+                    //check if piece has any available moves
+                    
                 } else {
                     selectedSquare = null;
                 }

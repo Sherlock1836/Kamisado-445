@@ -4,17 +4,20 @@
  */
 
 import java.awt.Color;
+import java.util.HashMap;
 
 public class Kamisado {
-    private static Board gameBoard;
+    public static Board gameBoard;
     private static GraphicsWindow gWindow;
     private static boolean gameOver;
     private static Square[] move;
     public static boolean isBlacksTurn; // is public so square mouse listener can check team before allowing selection
     private static Player whitePlayer;
     private static Player blackPlayer;
+    public static HashMap<String, DragonTower> pieces;
 
     public static void main(String[] args) throws Exception {
+        pieces = new HashMap<String, DragonTower>();
         gameOver = true;
         isBlacksTurn = true;
         gameBoard = new Board();
