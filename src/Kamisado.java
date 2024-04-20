@@ -17,6 +17,7 @@ public class Kamisado {
     public static HashMap<String, DragonTower> pieces;
 
     public static void main(String[] args) throws Exception {
+        new LoopSound();
         pieces = new HashMap<String, DragonTower>();
         gameOver = true;
         isBlacksTurn = true;
