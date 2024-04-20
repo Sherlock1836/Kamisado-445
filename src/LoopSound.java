@@ -5,6 +5,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.SwingUtilities;
 
+// found this class at https://stackoverflow.com/questions/16867976/how-do-you-add-music-to-a-jframe
+
 public class LoopSound {
     public LoopSound() {
         try{
