@@ -9,6 +9,10 @@ public class Player {
         this.teamColor = teamColor;
     }
 
+    public boolean isBot() {
+        return isBot;
+    }
+
     public Square[] getMove() {
         if (isBot)
             return calculateMove();

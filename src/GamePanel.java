@@ -66,7 +66,7 @@ public class GamePanel extends JPanel {
         turnLabel.setFont(new Font("Arial", Font.BOLD, 16));
         turnLabel.setBackground(new Color(255, 255, 255, 95));
         turnLabel.setForeground(Color.DARK_GRAY);
-        // buttonPanel.add(new AlphaContainer(turnLabel));
+        buttonPanel.add(new AlphaContainer(turnLabel));
 
         start = new JButton("Start");
         start.addActionListener(new ActionListener() {
