@@ -30,38 +30,38 @@ public class Player {
 
     // bots algorithm
     private Square[] calculateMove() {
-        // Find the piece that matches the last moved opponent color, assuming "white"
+        // find the piece that matches the last moved opponent color, white default team
         // team plays the bot
         DragonTower toMove = Kamisado.pieces.get("white " + MoveValidator.lastMovedOpponentColor);
 
         if (toMove == null) {
-            return null; // No valid piece to move based on the last color
+            return null; // no valid piece to move based on the last color
         }
 
         Square currentSquare = toMove.getSquare();
         int startRow = currentSquare.getRow();
         int startCol = currentSquare.getColumn();
 
-        // Try moving forward and diagonally, if possible, checking for boundaries and
-        // blockages
-        int[] potentialRows = { startRow - 1, startRow - 1, startRow - 1 }; // Possible rows for forward and diagonal
+        // try moving forward and diagonally, if possible, checking for boundaries and
+        // blocks
+        int[] potentialRows = { startRow - 1, startRow - 1, startRow - 1 }; // possible rows for forward and diagonal
                                                                             // moves
-        int[] potentialCols = { startCol, startCol - 1, startCol + 1 }; // Corresponding columns
+        int[] potentialCols = { startCol, startCol - 1, startCol + 1 }; // corresponding columns
 
         for (int i = 0; i < potentialRows.length; i++) {
             int newRow = potentialRows[i];
             int newCol = potentialCols[i];
 
-            // Check boundaries
+            // check boundaries
             if (newRow >= 0 && newCol >= 0 && newCol < Kamisado.gameBoard.getBoardArray()[0].length) {
                 Square newSquare = Kamisado.gameBoard.getBoardArray()[newRow][newCol];
-                if (newSquare.getDragonTower() == null) { // Check if the square is unoccupied
-                    return new Square[] { currentSquare, newSquare }; // Valid move found
+                if (newSquare.getDragonTower() == null) { // check if the square is unoccupied
+                    return new Square[] { currentSquare, newSquare }; // valid move found
                 }
             }
         }
 
-        // If no valid move is found, just return the current position (no move)
+        // if no valid move is found, just return the current position (no move)
         return new Square[] { currentSquare, currentSquare };
     }
 
