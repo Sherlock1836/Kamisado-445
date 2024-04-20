@@ -3,14 +3,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class GamePanel extends JPanel {
     private BackgroundPanel boardPanelHolder;
@@ -21,13 +21,13 @@ public class GamePanel extends JPanel {
     private JButton reset;
     private JLabel turnLabel;
 
-    private Square selectedSquare;      // Store the selected square for dragging
-    private Square destinationSquare;   //Store destination square
+    private Square selectedSquare; // Store the selected square for dragging
+    private Square destinationSquare; // Store destination square
 
     public Square[] getMove() {
         Square[] move = null;
-        if(selectedSquare != null && destinationSquare != null){
-            move = new Square[] {selectedSquare, destinationSquare}; //pack move in an array to be processed
+        if (selectedSquare != null && destinationSquare != null) {
+            move = new Square[] { selectedSquare, destinationSquare }; // pack move in an array to be processed
             selectedSquare.setSelected(false);
             selectedSquare = null;
             destinationSquare = null;
@@ -48,7 +48,7 @@ public class GamePanel extends JPanel {
 
                 // Add mouse listener to each square
                 square.addMouseListener(new SquareMouseListener());
-                //square.addMouseMotionListener(new SquareMouseMotionListener());
+                // square.addMouseMotionListener(new SquareMouseMotionListener());
 
                 // Add the square to the board panel
                 boardPanel.add(square);
@@ -62,11 +62,11 @@ public class GamePanel extends JPanel {
         buttonPanel.setOpaque(false);
         buttonPanel.setPreferredSize(new Dimension(100, 200));
 
-        turnLabel = new JLabel(" Click Start "); //"            "
+        turnLabel = new JLabel(" Click Start "); // " "
         turnLabel.setFont(new Font("Arial", Font.BOLD, 16));
         turnLabel.setBackground(new Color(255, 255, 255, 95));
         turnLabel.setForeground(Color.DARK_GRAY);
-        buttonPanel.add(new AlphaContainer(turnLabel));
+        // buttonPanel.add(new AlphaContainer(turnLabel));
 
         start = new JButton("Start");
         start.addActionListener(new ActionListener() {
@@ -114,18 +114,19 @@ public class GamePanel extends JPanel {
                         && ((selectedSquare.getDragonTower().getTeam() == "black") == Kamisado.isBlacksTurn)) {
                     selectedSquare.setSelected(true); // Highlight selected square
                     selectedSquare.repaint(); // probably will need this
-                    //check if piece has any available moves
-                    
+                    // check if piece has any available moves
+
                 } else {
                     selectedSquare = null;
                 }
             } else {
                 Square clickedSquare = (Square) e.getSource();
                 // if (clickedSquare == selectedSquare) {
-                //     // If the destination square is the same as the selected square, reset selectedSquare
-                //     selectedSquare.setSelected(false);
-                //     selectedSquare.repaint();
-                //     selectedSquare = null;
+                // // If the destination square is the same as the selected square, reset
+                // selectedSquare
+                // selectedSquare.setSelected(false);
+                // selectedSquare.repaint();
+                // selectedSquare = null;
                 // } else {
                 destinationSquare = clickedSquare;
                 // }
@@ -142,18 +143,22 @@ public class GamePanel extends JPanel {
         turnLabel.setText(t);
         turnLabel.setForeground(c);
     }
-    //IF WE WANT DRAGGING AT SOME POINT WE CAN USE THISSS
+    // IF WE WANT DRAGGING AT SOME POINT WE CAN USE THISSS
     // Inner class for mouse motion listener implementation
-    //All this set to change, feel free to edit
-    /*private class SquareMouseMotionListener extends MouseAdapter {
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            if (selectedSquare != null) {
-                // Get the current square being dragged
-                Square draggedSquare = (Square) e.getSource();
-                // Update the location of the dragged square based on mouse position
-                draggedSquare.setLocation(draggedSquare.getX() - draggedSquare.getWidth()/2 + e.getX(), draggedSquare.getY() - draggedSquare.getHeight()/2 + e.getY());
-            }
-        }
-    }*/
+    // All this set to change, feel free to edit
+    /*
+     * private class SquareMouseMotionListener extends MouseAdapter {
+     * 
+     * @Override
+     * public void mouseDragged(MouseEvent e) {
+     * if (selectedSquare != null) {
+     * // Get the current square being dragged
+     * Square draggedSquare = (Square) e.getSource();
+     * // Update the location of the dragged square based on mouse position
+     * draggedSquare.setLocation(draggedSquare.getX() - draggedSquare.getWidth()/2 +
+     * e.getX(), draggedSquare.getY() - draggedSquare.getHeight()/2 + e.getY());
+     * }
+     * }
+     * }
+     */
 }

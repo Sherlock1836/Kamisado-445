@@ -72,7 +72,8 @@ public class Kamisado {
                         gWindow.updateTurnLabel(" No Moves ", Color.BLACK);
                         try {
                             Thread.sleep(3000);
-                        } catch(InterruptedException e){}
+                        } catch (InterruptedException e) {
+                        }
                         isBlacksTurn = !isBlacksTurn;
                     }
                 }
@@ -138,11 +139,11 @@ public class Kamisado {
 
     public static void setPlayers(boolean isBotGame) {
         if (isBotGame) {
-            whitePlayer = new Player(true); // makes white player a bot
-            blackPlayer = new Player(false);
+            whitePlayer = new Player(true, "white"); // makes white player a bot
+            blackPlayer = new Player(false, "black");
         } else {
-            whitePlayer = new Player(false);
-            blackPlayer = new Player(false);
+            whitePlayer = new Player(false, "white");
+            blackPlayer = new Player(false, "black");
         }
     }
 
