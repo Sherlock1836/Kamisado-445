@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 public class LoopSound {
     public LoopSound() {
         try{
-            File audioFile = new File("placeholder_background_music.wav");
+            File audioFile = new File("Nujabes-Mystline-_Full-Version_.wav");
             Clip clip = AudioSystem.getClip();
             // getAudioInputStream() also accepts a File or InputStream
             AudioInputStream ais = AudioSystem.getAudioInputStream(audioFile);
