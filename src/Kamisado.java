@@ -112,7 +112,7 @@ public class Kamisado {
     }
 
     private static void executeMove(Square[] move) {
-        if(!isBlacksTurn && whitePlayer.isBot() || isBlacksTurn && blackPlayer.isBot()){
+        if(whitePlayer.isBot() && !isBlacksTurn){
             move[0].setSelected(true);
             try{
                 Thread.sleep(3000);     //crude animation of bots move
