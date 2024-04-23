@@ -22,7 +22,6 @@ public class LoopSound {
 
             // Adjust volume
             FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            // Reduce volume by 20 decibels
             gainControl.setValue(-22.5f);
 
             clip.loop(Clip.LOOP_CONTINUOUSLY);

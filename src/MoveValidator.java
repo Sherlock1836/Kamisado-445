@@ -54,11 +54,13 @@ public class MoveValidator {
         // return true if all conditions are met, false otherwise
         setTurnChange(false);
         if (!isFirstTurn && currentPlayerColor != lastMovedOpponentColor) {
+            AllMoveAndWinSounds.playIncorrectMoveSound();
             System.out.println("Incorrect Piece Color");
             return false;
         }
         // Check if the movement is sideways
         if (startY == endY) {
+            AllMoveAndWinSounds.playIncorrectMoveSound();
             System.out.println("Sideways movement is not allowed");
             canMove(startX, startY, endX, endY, board);
             return false;
@@ -98,6 +100,7 @@ public class MoveValidator {
                         || board.getBoardArray()[startY + 1][startX - 1].getDragonTower() != null;
 
                 if (blockedRight && blockedLeft) {
+                    AllMoveAndWinSounds.playIncorrectMoveSound();
                     System.out.println("Turn Change");
                     setTurnChange(true);
                     lastMovedOpponentColor = board.getBoardArray()[startY][startX].getColor(); // Update color of last moved opponent's piece
@@ -113,6 +116,7 @@ public class MoveValidator {
                         || board.getBoardArray()[startY - 1][startX - 1].getDragonTower() != null;
 
                 if (blockedRight && blockedLeft) {
+                    AllMoveAndWinSounds.playIncorrectMoveSound();
                     System.out.println("Turn Change");
                     setTurnChange(true);
                     lastMovedOpponentColor = board.getBoardArray()[startY][startX].getColor(); // Update color of last moved opponent's piece
@@ -133,6 +137,7 @@ public class MoveValidator {
 
         if (currentTeamColor == "white") {
             if (deltaY > 0) {
+                AllMoveAndWinSounds.playIncorrectMoveSound();
                 System.out.println("White moved backwards");
                 return false;
             } else if (deltaY < 0 && deltaX == 0) {
@@ -142,11 +147,13 @@ public class MoveValidator {
                 System.out.println("White: Diagonal Forward");
                 return true;
             } else {
+                AllMoveAndWinSounds.playIncorrectMoveSound();
                 System.out.println("Invalid Movement 1");
                 return false;
             }
         } else if (currentTeamColor == "black") {
             if (deltaY < 0) {
+                AllMoveAndWinSounds.playIncorrectMoveSound();
                 System.out.println("Black moved backwards");
                 return false;
             } else if (deltaY > 0 && deltaX == 0) {
@@ -156,10 +163,12 @@ public class MoveValidator {
                 System.out.println("Black: Diagonal Forward");
                 return true;
             } else {
+                AllMoveAndWinSounds.playIncorrectMoveSound();
                 System.out.println("Invalid Movement 2");
                 return false;
             }
         } else {
+            AllMoveAndWinSounds.playIncorrectMoveSound();
             System.out.println("Invalid Movement 3");
             return false;
         }
@@ -170,6 +179,7 @@ public class MoveValidator {
         int deltaX = endX - startX;
 
         if (board.getBoardArray()[endY][endX].getDragonTower() != null) {
+            AllMoveAndWinSounds.playIncorrectMoveSound();
             System.out.println("Piece already at location");
             return false;
         }
@@ -181,6 +191,7 @@ public class MoveValidator {
             int yIncrement = Integer.compare(deltaY, 0);
             for (int y = startY + yIncrement; y != endY; y += yIncrement) {
                 if (board.getBoardArray()[y][startX].getDragonTower() != null) {
+                    AllMoveAndWinSounds.playIncorrectMoveSound();
                     System.out.println("There's a piece in the way");
                     return false; // there's a piece in the way
                 }
@@ -192,6 +203,7 @@ public class MoveValidator {
             for (int x = startX + xIncrement, y = startY + yIncrement; x != endX
                     && y != endY; x += xIncrement, y += yIncrement) {
                 if (board.getBoardArray()[y][x].getDragonTower() != null) {
+                    AllMoveAndWinSounds.playIncorrectMoveSound();
                     System.out.println("Way is not clear");
                     return false; // there's a piece in the way
                 }

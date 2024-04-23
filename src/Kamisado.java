@@ -102,7 +102,7 @@ public class Kamisado {
             gameOver = !gameOver;
 
             LoopSound.stopLoopSound();
-            MoveAndWinSound.playWinSound();
+            AllMoveAndWinSounds.playWinSound();
 
             gWindow.updateTurnLabel("White Wins!", Color.WHITE);
             // set winner (boolean in winner Panel)
@@ -111,7 +111,7 @@ public class Kamisado {
             gameOver = !gameOver;
             
             LoopSound.stopLoopSound();
-            MoveAndWinSound.playWinSound();
+            AllMoveAndWinSounds.playWinSound();
 
             gWindow.updateTurnLabel("Black Wins!", Color.BLACK);
             // set winner
@@ -130,7 +130,7 @@ public class Kamisado {
 
         move[1].setDragonTower(move[0].getDragonTower());
         move[0].setDragonTower(null);
-        MoveAndWinSound.playMoveSound();
+        AllMoveAndWinSounds.playMoveSound();
     }
 
     // methods to interface with gui or somn

@@ -4,8 +4,9 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 
-public class MoveAndWinSound 
+public class AllMoveAndWinSounds 
 {
      public static void playMoveSound() {
           try {
@@ -13,6 +14,24 @@ public class MoveAndWinSound
                Clip clip = AudioSystem.getClip();
                AudioInputStream ais = AudioSystem.getAudioInputStream(audioFile);
                clip.open(ais);
+               clip.start();
+          } catch (Exception e) {
+               e.printStackTrace();
+          }
+     }
+
+     public static void playIncorrectMoveSound()
+     {
+          try {
+               File audioFile = new File("Incorrect_move.wav");
+               Clip clip = AudioSystem.getClip();
+               AudioInputStream ais = AudioSystem.getAudioInputStream(audioFile);
+               clip.open(ais);
+
+               // Adjust volume
+               FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+               gainControl.setValue(5.5f);
+
                clip.start();
           } catch (Exception e) {
                e.printStackTrace();
