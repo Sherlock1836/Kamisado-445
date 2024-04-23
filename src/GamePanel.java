@@ -83,6 +83,10 @@ public class GamePanel extends JPanel {
             public void actionPerformed(ActionEvent event) {
                 Kamisado.setGameOver(true);
                 setTurnLabel(" Click Start ", Color.DARK_GRAY);
+
+                LoopSound.stopLoopSound();
+                LoopSound.playLoopSound();
+                
                 Kamisado.clearBoard();
                 repaint();
             }

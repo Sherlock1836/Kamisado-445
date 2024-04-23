@@ -9,10 +9,13 @@ import javax.swing.SwingUtilities;
 // found this class at https://stackoverflow.com/questions/16867976/how-do-you-add-music-to-a-jframe
 
 public class LoopSound {
-    public LoopSound() {
+    private static Clip clip;
+
+    public static void playLoopSound()
+    {
         try{
             File audioFile = new File("Nujabes-Mystline-_Full-Version_.wav");
-            Clip clip = AudioSystem.getClip();
+            clip = AudioSystem.getClip();
             // getAudioInputStream() also accepts a File or InputStream
             AudioInputStream ais = AudioSystem.getAudioInputStream(audioFile);
             clip.open(ais);
@@ -31,5 +34,11 @@ public class LoopSound {
                 }
             });
         } catch(Exception e){}
+    }
+
+    public static void stopLoopSound() {
+        if (clip != null && clip.isRunning()) {
+            clip.stop();
+        }
     }
 }

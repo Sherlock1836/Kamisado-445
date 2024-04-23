@@ -17,7 +17,7 @@ public class Kamisado {
     public static HashMap<String, DragonTower> pieces;
 
     public static void main(String[] args) throws Exception {
-        new LoopSound();
+        LoopSound.playLoopSound();
         pieces = new HashMap<String, DragonTower>();
         gameOver = true;
         isBlacksTurn = true;
@@ -100,11 +100,19 @@ public class Kamisado {
     private static void checkForWin(/* add a score parameter if we add new game mode */) {
         if (whitePlayer.getScore() > 0) {
             gameOver = !gameOver;
+
+            LoopSound.stopLoopSound();
+            MoveAndWinSound.playWinSound();
+
             gWindow.updateTurnLabel("White Wins!", Color.WHITE);
             // set winner (boolean in winner Panel)
             // showPanel("WinnerPanel");
         } else if (blackPlayer.getScore() > 0) {
             gameOver = !gameOver;
+            
+            LoopSound.stopLoopSound();
+            MoveAndWinSound.playWinSound();
+
             gWindow.updateTurnLabel("Black Wins!", Color.BLACK);
             // set winner
             // showPanel("WinnerPanel");
@@ -122,7 +130,7 @@ public class Kamisado {
 
         move[1].setDragonTower(move[0].getDragonTower());
         move[0].setDragonTower(null);
-        MoveSound.playMoveSound();
+        MoveAndWinSound.playMoveSound();
     }
 
     // methods to interface with gui or somn
