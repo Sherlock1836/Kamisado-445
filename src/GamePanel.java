@@ -140,7 +140,14 @@ public class GamePanel extends JPanel {
 
     public void setTurnLabel(String t) {
         turnLabel.setText(t);
-        turnLabel.setForeground(Square.setColor(MoveValidator.getLMOColor()));
+        String lastMovedOpponentColor = MoveValidator.getLMOColor();
+        if (lastMovedOpponentColor != null) {
+            // Set the color of the turn label based on the color of the last moved opponent's piece
+            turnLabel.setForeground(Square.setColor(lastMovedOpponentColor));
+        } else {
+            // Set the default color if there is no last moved opponent's piece color
+            turnLabel.setForeground(Color.BLACK);
+        }
     }
 
     public void setTurnLabel(String t, Color c) {

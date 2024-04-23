@@ -5,7 +5,6 @@ public class MoveValidator {
     private static String currentPlayerColor;
     private static String currentTeamColor;
     private static boolean turnChange = false;
-    private static Board gboard;
 
     private MoveValidator() {
     }
@@ -32,8 +31,6 @@ public class MoveValidator {
         int startY = move[0].getRow();
         int endX = move[1].getColumn();
         int endY = move[1].getRow();
-
-        gboard = board;
 
         temp = move[1].getColor();
 
@@ -103,7 +100,7 @@ public class MoveValidator {
                 if (blockedRight && blockedLeft) {
                     System.out.println("Turn Change");
                     setTurnChange(true);
-                    setisFirstTurn(true);
+                    lastMovedOpponentColor = board.getBoardArray()[startY][startX].getColor(); // Update color of last moved opponent's piece
                     return false;
                 }
             }
@@ -118,7 +115,7 @@ public class MoveValidator {
                 if (blockedRight && blockedLeft) {
                     System.out.println("Turn Change");
                     setTurnChange(true);
-                    setisFirstTurn(true);
+                    lastMovedOpponentColor = board.getBoardArray()[startY][startX].getColor(); // Update color of last moved opponent's piece
                     return false;
                 }
             }
