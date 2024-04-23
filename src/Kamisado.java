@@ -122,6 +122,7 @@ public class Kamisado {
 
         move[1].setDragonTower(move[0].getDragonTower());
         move[0].setDragonTower(null);
+        MoveSound.playMoveSound();
     }
 
     // methods to interface with gui or somn

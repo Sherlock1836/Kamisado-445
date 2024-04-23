@@ -4,5 +4,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
     ],
-    "java.saveActions.organizeImports": true
+    "java.saveActions.organizeImports": true,
+    "cSpell.words": [
+        "Kamisado"
+    ]
 }

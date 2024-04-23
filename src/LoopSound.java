@@ -3,6 +3,7 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import javax.swing.SwingUtilities;
 
 // found this class at https://stackoverflow.com/questions/16867976/how-do-you-add-music-to-a-jframe
@@ -15,6 +16,12 @@ public class LoopSound {
             // getAudioInputStream() also accepts a File or InputStream
             AudioInputStream ais = AudioSystem.getAudioInputStream(audioFile);
             clip.open(ais);
+
+            // Adjust volume
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            // Reduce volume by 20 decibels
+            gainControl.setValue(-22.5f);
+
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
