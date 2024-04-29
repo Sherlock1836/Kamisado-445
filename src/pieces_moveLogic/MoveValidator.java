@@ -5,11 +5,9 @@ import sfx.AllSounds;
 
 public class MoveValidator {
     private static boolean isFirstTurn = true;
-    private static String temp;
-    public static String lastMovedOpponentColor = null;
-    private static String currentPlayerColor;
-    private static String currentTeamColor;
     private static boolean turnChange = false;
+    private static String temp, currentPlayerColor, currentTeamColor;
+    public static String lastMovedOpponentColor = null;
 
     private MoveValidator() {
     }
@@ -24,8 +22,8 @@ public class MoveValidator {
 
     public static void resetValidator() {
         isFirstTurn = true;
-        lastMovedOpponentColor = null;
         turnChange = false;
+        lastMovedOpponentColor = null;
         currentPlayerColor = null;
         currentTeamColor = null;
     }
@@ -63,8 +61,15 @@ public class MoveValidator {
             System.out.println("Incorrect Piece Color");
             return false;
         }
+
+        if ((startY == endY) && (startX == endX)) {
+             AllSounds.playIncorrectMoveSound();
+             System.out.println("Cannot move to the same place");
+             canMove(startX, startY, endX, endY, board);
+             return false;
+        }
         // Check if the movement is sideways
-        if (startY == endY) {
+        else if (startY == endY) {
             AllSounds.playIncorrectMoveSound();
             System.out.println("Sideways movement is not allowed");
             canMove(startX, startY, endX, endY, board);
