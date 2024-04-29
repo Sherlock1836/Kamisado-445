@@ -1,18 +1,23 @@
-## Getting Started
+## Kamisado 445 
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This game was created for the final project of the CSC 445 course at Murray State University taught by Dr. Matthew Tennyson.
 
-## Folder Structure
+## The Team
 
-The workspace contains two folders by default, where:
+The team that built this game:
+ - Alexander Imm
+ - Isaac Reynolds
+ - Matthew Hayes
+ - Nathanael Turner
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+# The Game
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+This app is our recreation of the [Kamisado](https://en.wikipedia.org/wiki/Kamisado) board game. The game is played on a chess style board, 
+and is fairly simple to learn. Rules and strategies for the game can be found [here](https://www.yucata.de/en/Rules/Kamisado).
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+![image](https://github.com/Sherlock1836/Kamisado-445/assets/73602312/a2ab8d60-930a-41a5-a72a-21902f9dad84)
 
-## Dependency Management
+# How to Run the Game
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+To play get the game running on your computer, first make sure you have Java Version 8 Update 411 (or later, the latest release can be found [here](https://www.java.com/en/download/)) installed. 
+Then download the jar from the latest release in this repo, and you should be set (double clicking it in your download folder is the easiest way to run the jar).
