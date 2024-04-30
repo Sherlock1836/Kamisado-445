@@ -2,8 +2,8 @@ package graphics;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -30,7 +30,8 @@ public class GraphicsWindow extends JFrame{
 
         Image img = null;
         try{
-            img = ImageIO.read(new File("src/images/background.jpg"));
+            InputStream inStream = getClass().getResourceAsStream("images/background.jpg");
+            img = ImageIO.read(inStream);
         } catch(IOException e) {
             e.printStackTrace();
         }

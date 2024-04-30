@@ -1,5 +1,6 @@
 package music;
-import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -15,9 +16,9 @@ public class BackgroundMusic {
     public static void playBackgroundMusic()
     {
         try{
-            File audioFile = new File("src/music/Nujabes-Mystline-_Full-Version_.wav");
+            URL audioFile = BackgroundMusic.class.getResource("Nujabes-Mystline-_Full-Version_.wav");
             clip = AudioSystem.getClip();
-            // getAudioInputStream() also accepts a File or InputStream
+            // getAudioInputStream() also accepts a  File or InputStream
             AudioInputStream ais = AudioSystem.getAudioInputStream(audioFile);
             clip.open(ais);
 

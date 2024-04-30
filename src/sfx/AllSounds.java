@@ -3,6 +3,8 @@
 
 package sfx;
 import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -14,7 +16,7 @@ public class AllSounds
 {
      public static void playMoveSound() {
           try {
-               File audioFile = new File("src/sfx/move.wav");
+               URL audioFile = AllSounds.class.getResource("move.wav");
                Clip clip = AudioSystem.getClip();
                AudioInputStream ais = AudioSystem.getAudioInputStream(audioFile);
                clip.open(ais);
@@ -27,7 +29,7 @@ public class AllSounds
      public static void playIncorrectMoveSound()
      {
           try {
-               File audioFile = new File("src/sfx/Incorrect_move.wav");
+               URL audioFile = AllSounds.class.getResource("Incorrect_move.wav");
                Clip clip = AudioSystem.getClip();
                AudioInputStream ais = AudioSystem.getAudioInputStream(audioFile);
                clip.open(ais);
@@ -44,7 +46,7 @@ public class AllSounds
 
      public static void playWinSound() {
           try {
-               File winSound = new File("src/sfx/mixkit-male-voice-cheer-2010.wav");
+               URL winSound = AllSounds.class.getResource("mixkit-male-voice-cheer-2010.wav");
                Clip clip = AudioSystem.getClip();
                AudioInputStream ais = AudioSystem.getAudioInputStream(winSound);
 
