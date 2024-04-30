@@ -2,8 +2,6 @@
 // and https://docs.oracle.com/javase/8/docs/api/javax/sound/sampled/AudioInputStream.html
 
 package sfx;
-import java.io.File;
-import java.io.InputStream;
 import java.net.URL;
 
 import javax.sound.sampled.AudioFormat;

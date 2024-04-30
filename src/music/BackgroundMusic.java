@@ -1,5 +1,4 @@
 package music;
-import java.io.InputStream;
 import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
